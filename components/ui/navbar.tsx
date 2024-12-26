@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex-shrink-0">
             <img
-              src="/big-logo.png"
+              src="/jazz-logo.png"
               alt="KUPCO Logo"
               width={120}
               height={60}
