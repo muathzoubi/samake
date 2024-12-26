@@ -1,14 +1,12 @@
 'use client'
 import { useState } from "react"
 
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ShoppingCart, PhoneIcon as WhatsappIcon } from 'lucide-react'
 import { useRouter } from "next/navigation"
 import { Navbar } from "@/components/ui/navbar"
 import { Badge } from "@/components/ui/badge"
-import { Avatar } from "@/components/ui/avatar"
 
 type Product = {
   id: number;

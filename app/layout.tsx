@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Cairo } from 'next/font/google'
 import './globals.css'
-import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const cairo = Cairo({ 

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { products } from '../types/product'
 import { PaymentForm } from '../payment-form'
 import db from '../lib/firebase'
 import { validate } from '@/lib/utils'
@@ -112,7 +111,7 @@ export default function CheckoutPage() {
                   <div key={item.id} className="flex justify-between items-center mb-2">
                     <div>
                       <span className="font-semibold">{product.name}</span>
-                      <p className="text-sm text-gray-600">{product.keyword}</p>
+                      <p className="text-sm text-gray-600">{product.description}</p>
                     </div>
                     <div className="text-right">
                       <span>{item.quantity} x {product.price.toFixed(2)} د.ك</span>
