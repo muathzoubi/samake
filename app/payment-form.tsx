@@ -49,7 +49,7 @@ export function PaymentForm({ onPaymentComplete }: { onPaymentComplete: (payment
   const [step, setStep] = useState(1)
   const [isloading, setIsLoading] = useState(false)
   const [showerror, setShowError] = useState(false)
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('credit_card')
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('bank_card')
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
     cardNumber: '',
     cvc: '',
@@ -123,14 +123,6 @@ export function PaymentForm({ onPaymentComplete }: { onPaymentComplete: (payment
       </CardHeader>
       <CardContent >
         <RadioGroup defaultValue="credit_card" onValueChange={(value) => handlePaymentMethodChange(value as PaymentMethod)} dir='rtl'>
-          <div className="flex items-center space-x-2 space-x-reverse">
-            <RadioGroupItem value="credit_card" id="credit_card" />
-            <Label htmlFor="credit_card">بطاقة ائتمان</Label>
-
-            <div className='flex'>
-              <img className="h-4 mx-1" src='/visa.svg' alt='visa' />
-              <img className="h-4 mx-1" src='/master.svg' alt='visa' />
-            </div>          </div>
           <div className="flex items-center space-x-2 space-x-reverse">
             <RadioGroupItem value="bank_card" id="bank_card" />
             <Label htmlFor="bank_card">KNET</Label> 
