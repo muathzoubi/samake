@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { PaymentForm } from '../payment-form'
 import db from '../lib/firebase'
 import { validate } from '@/lib/utils'
+import { products } from '../types/product'
 type CartItem = {
   id: number;
   quantity: number;

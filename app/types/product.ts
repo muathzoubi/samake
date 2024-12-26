@@ -9,7 +9,7 @@ type Product = {
   description: string;
 };
 
-const products: Product[] = [
+export const products: Product[] = [
   {
     id: 1,
     name: 'سمك شعري',
