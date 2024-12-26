@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import { Card } from "@/components/ui/card" 
 import { ShoppingCart, PhoneIcon as WhatsappIcon } from 'lucide-react'
 import { useRouter } from "next/navigation"
 import { Navbar } from "@/components/ui/navbar"
@@ -185,7 +185,7 @@ export default function ProductsPage() {
             </Card>
           ))}
           
-          <div className="fixed flex bottom-4 left-4 rounded-full bg-orange-500 p-4 text-white shadow-lg">
+          <div className="fixed flex bottom-4 left-4 rounded-full bg-blue-500 -500 p-4 text-white shadow-lg">
           <ShoppingCart size={20} aria-label="عربة التسوق" />
           <Badge className=" px-2 bg-gray-800 hover:bg-gray-800 rounded-full" variant={'default'}>{cartItemCount}</Badge>
         </div>
