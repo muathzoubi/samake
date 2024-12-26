@@ -1,6 +1,8 @@
 import { Star } from 'lucide-react'
 import Image from 'next/image'
 import { Card } from '@/components/ui/card'
+import { Button } from './ui/button'
+import Link from 'next/link'
 
 export function CompanyInfo() {
   return (
@@ -8,7 +10,7 @@ export function CompanyInfo() {
       <Card className="overflow-hidden">
         <div className="relative aspect-square">
           <Image
-            src="/placeholder.svg"
+            src="/01.webp"
             alt="الشركة الوطنية للأسماك"
             fill
             className="object-contain p-8"
@@ -21,7 +23,16 @@ export function CompanyInfo() {
           </div>
         </div>
       </Card>
-
+<div  className='mx-4'>
+  <Link href={'products'}>
+          <Button
+variant={'outline'}
+            className="w-full  border-blue-600'"
+          >
+            المزيد من المنتجات
+          </Button>
+          </Link>
+</div>
       <div className="rounded-lg bg-white p-4 shadow">
         <h2 className="mb-2 text-xl font-bold">قائمة اسماك الوطنية</h2>
         <div className="flex items-center gap-2 text-sm text-gray-600">

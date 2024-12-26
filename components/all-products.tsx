@@ -6,62 +6,180 @@ import { Button } from '@/components/ui/button'
 import { useCart } from '@/components/cart-provider'
 import { Badge } from '@/components/ui/badge'
 
-const allProducts = [
-  {
-    name: 'عرض كل الكويت',
-    description: '10 كيلو روبيان كويتي جامبو طازج',
-    image: '/a.webp',
-    price: 8.000,
-    isSpecialOffer: true,
-  },
-  {
-    name: 'عرض الوطنية',
-    description: 'كرتون 10 كيلو سيباس تركي حجم 800-1000',
-    image: '/b.webp',
-    price: 20.000,
-    isSpecialOffer: true,
-  },
-  {
-    name: 'عرض اليوم',
-    description: 'كرتون 10 كيلو روبيان جامبو مقشر',
-    image: '/c.webp',
-    price: 8.000,
-    isSpecialOffer: true,
-  },
-  {
-    name: 'كرتون سيباس تركي',
-    description: 'كرتون 10 كيلو سيباس تركي حجم 1000-1500',
-    image: '/d.webp',
-    price: 32.000,
-    sizes: [
-      { size: '800/100', price: 39 },
-      { size: '1000/1500', price: 40 },
-      { size: '400/600', price: 32 },
-      { size: '600/800', price: 35 },
-    ]
-  },
-  {
-    name: 'روبيان إيراني وسط',
-    description: '1 كيلو روبيان إيراني وسط',
-    image: '/a.webp',
-    price: 3.500,
-  },
-]
+import { ReactElement, JSXElementConstructor, ReactNode, AwaitedReactNode, ReactPortal, Key, useState } from 'react'
+import { useRouter } from "next/navigation"
+import { ShoppingCart } from 'lucide-react'
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  currency: string; // Added currency field
+  weight: number | string; // Adjusted to accommodate ranges if needed
+  unit: string;
+  image: string;
+  description: string;
+  isSpecialOffer: boolean,
 
+};
+const products: Product[] = [
+  {
+    id: 1,
+    name: 'سمك شعري',
+    price: 2,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/a.webp',
+    description: 'سمك طازج شعري أحمر',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 2,
+    name: 'فيليه هامور',
+    price: 3,
+    currency: 'دينار كويتي',
+    weight: 1000,
+    unit: 'جرام',
+    image: '/b.webp',
+    description: 'فيليه سمك طازج مع الليمون',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 3,
+    name: 'سمك بوري البحر الأحمر',
+    price: 2.6,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/c.webp',
+    description: 'سمك طازج من البحر الأحمر',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 4,
+    name: 'سمك البياض الأبيض',
+    price: 3.3,
+    currency: 'دينار كويتي',
+    weight: '800-1000', // Adjusted for the specified range
+    unit: 'جرام',
+    image: '/d.webp',
+    description: 'سمك طازج مع التوابل',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 5,
+    name: 'سمك الماكريل',
+    price: 4.2,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/e.webp',
+    description: 'سمك ماكريل طازج',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 6,
+    name: 'سلمون مدخن شرائح رفيعة',
+    price: 5.3,
+    currency: 'دينار كويتي',
+    weight: 200,
+    unit: 'جرام مغلف',
+    image: '/f.webp',
+    description: 'شرائح سلمون مدخن',
+    isSpecialOffer: true,
+  },
+  {
+    id: 7,
+    name: 'سمك السردين (السلفي)',
+    price: 5.25,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/g.webp',
+    description: 'سمك سردين طازج',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 8,
+    name: 'سمك بلطي',
+    price: 3.2,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/h.webp',
+    description: 'سمك بلطي طازج',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 9,
+    name: 'سمك بوري كبير',
+    price: 4.2,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/j.webp',
+    description: 'سمك بوري طازج كبير الحجم',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 10,
+    name: 'سمك السلمون النرويجي',
+    price: 2.2,
+    image: '/k.webp',
+    unit: 'جرام',
+    weight: 800,
+    currency: 'دينار كويتي',
+    description: 'سمك سلمون نرويجي طازج',
+    isSpecialOffer: true,
+
+  },
+];
 export function AllProducts() {
+  const [cart, setCart] = useState<{ id: number, quantity: number }[]>([])
   const { addToCart } = useCart()
+  const router = useRouter()
+  const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
+
+  const handleAddToCart = (productId: number) => {
+    setCart(prevCart => {
+      const existingItem = prevCart.find(item => item.id === productId)
+      if (existingItem) {
+        return prevCart.map(item =>
+          item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      } else {
+        return [...prevCart, { id: productId, quantity: 1 }]
+      }
+    })
+  }
+
+
+  const handleCheckout = () => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+    router.push('/checkout')
+  }
+
+  
 
   return (
     <section className="py-12">
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-2xl font-bold">جميع المنتجات</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {allProducts.map((product, index) => (
+          {products.map((product: any,index:number) => (
             <Card key={index} className="overflow-hidden">
               <div className="aspect-video relative">
                 <Image
                   src={product.image}
-                  alt={product.name}
+                  alt={product.name?.toString()!}
                   fill
                   className="object-cover"
                 />
@@ -76,7 +194,7 @@ export function AllProducts() {
                 <p className="mt-1 text-sm text-gray-600">{product.description}</p>
                 {product.sizes ? (
                   <div className="mt-2 grid gap-2">
-                    {product.sizes.map((size, idx) => (
+                    {product.sizes.map((size: { size: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; price: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined }, idx: Key | null | undefined) => (
                       <div key={idx} className="flex items-center justify-between text-sm">
                         <span>{size.size}</span>
                         <span>{size.price} د.ك</span>
@@ -87,7 +205,7 @@ export function AllProducts() {
                   <div className="mt-2 flex items-center justify-between">
                     <span className="text-lg font-bold">{product.price.toFixed(3)} د.ك</span>
                     <Button 
-                      onClick={() => addToCart(product.price)}
+                      onClick={() => handleAddToCart(product.id)}
                       className="bg-blue-800 hover:bg-blue-900"
                     >
                       إضافة
@@ -97,6 +215,12 @@ export function AllProducts() {
               </CardContent>
             </Card>
           ))}
+            <div className="flex justify-center ">
+          <Button onClick={handleCheckout} className=" bg-blue-500 hover:bg-[#001F43] text-white mt-4">
+            <ShoppingCart className="ml-2" />
+            السلة ({cartItemCount})
+          </Button>
+        </div>
         </div>
       </div>
     </section>

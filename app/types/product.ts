@@ -7,107 +7,128 @@ type Product = {
   unit: string;
   image: string;
   description: string;
+  isSpecialOffer: boolean,
+
 };
 
-export const products: Product[] = [
+const products: Product[] = [
   {
     id: 1,
     name: 'سمك شعري',
-    price: 80,
+    price: 2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/a.webp',
     description: 'سمك طازج شعري أحمر',
+    isSpecialOffer: true,
+
   },
   {
     id: 2,
     name: 'فيليه هامور',
-    price: 98,
+    price: 3,
     currency: 'دينار كويتي',
     weight: 1000,
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/b.webp',
     description: 'فيليه سمك طازج مع الليمون',
+    isSpecialOffer: true,
+
   },
   {
     id: 3,
     name: 'سمك بوري البحر الأحمر',
-    price: 52.6,
+    price: 2.6,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/c.webp',
     description: 'سمك طازج من البحر الأحمر',
+    isSpecialOffer: true,
+
   },
   {
     id: 4,
     name: 'سمك البياض الأبيض',
-    price: 43.3,
+    price: 3.3,
     currency: 'دينار كويتي',
     weight: '800-1000', // Adjusted for the specified range
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/d.webp',
     description: 'سمك طازج مع التوابل',
+    isSpecialOffer: true,
+
   },
   {
     id: 5,
     name: 'سمك الماكريل',
-    price: 38,
+    price: 4.2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/e.webp',
     description: 'سمك ماكريل طازج',
+    isSpecialOffer: true,
+
   },
   {
     id: 6,
     name: 'سلمون مدخن شرائح رفيعة',
-    price: 51.3,
+    price: 5.3,
     currency: 'دينار كويتي',
     weight: 200,
     unit: 'جرام مغلف',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/f.webp',
     description: 'شرائح سلمون مدخن',
+    isSpecialOffer: true,
   },
   {
     id: 7,
     name: 'سمك السردين (السلفي)',
-    price: 40.25,
+    price: 5.25,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/g.webp',
     description: 'سمك سردين طازج',
+    isSpecialOffer: true,
+
   },
   {
     id: 8,
     name: 'سمك بلطي',
-    price: 32.2,
+    price: 3.2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/h.webp',
     description: 'سمك بلطي طازج',
+    isSpecialOffer: true,
+
   },
   {
     id: 9,
     name: 'سمك بوري كبير',
-    price: 140,
+    price: 4.2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '/j.webp',
     description: 'سمك بوري طازج كبير الحجم',
+    isSpecialOffer: true,
+
   },
   {
     id: 10,
     name: 'سمك السلمون النرويجي',
-    price: 55,
-    currency: 'دينار كويتي',
-    weight: 800,
+    price: 2.2,
+    image: '/k.webp',
     unit: 'جرام',
-    image: '/placeholder.svg?height=300&width=400',
+    weight: 800,
+    currency: 'دينار كويتي',
     description: 'سمك سلمون نرويجي طازج',
+    isSpecialOffer: true,
+
   },
 ];
