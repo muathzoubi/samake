@@ -185,7 +185,7 @@ export default function ProductsPage() {
             </Card>
           ))}
           
-          <div className="fixed flex bottom-4 left-4 rounded-full bg-blue-500 -500 p-4 text-white shadow-lg">
+          <div onClick={handleCheckout} className="fixed flex bottom-4 left-4 rounded-full bg-blue-500 -500 p-4 text-white shadow-lg">
           <ShoppingCart size={20} aria-label="عربة التسوق" />
           <Badge className=" px-2 bg-gray-800 hover:bg-gray-800 rounded-full" variant={'default'}>{cartItemCount}</Badge>
         </div>
