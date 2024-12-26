@@ -38,9 +38,9 @@ export default function ArabicLandingPage() {
         <div className="embla overflow-hidden" ref={emblaRef}>
           <div className="embla__container flex">
             {[
-              { title: "دواجن طازجة، توصيل يومي", description: "أجود منتجات الدواجن من كوبكو", image: "/01.jpg" },
-              { title: "جودة عالية منذ 1974", description: "ضمان الأمن الغذائي والتميز", image: "/01.jpg" },
-              { title: "منتجات متنوعة لتلبية احتياجاتك", description: "من الدجاج الكامل إلى القطع المختارة", image: "/01.jpg" },
+               { title: 'طازج يومياً', description: 'نحصل على أسماكنا يومياً من الصيادين المحليين',image:'01.webp' },
+               { title: 'جودة عالية', description: 'نضمن أعلى معايير الجودة لجميع منتجاتنا' ,image:'01.webp'},
+               { title: 'توصيل سريع', description: 'نوصل طلبك إلى باب منزلك في أسرع وقت',image:'01.webp' },
             ].map((slide, index) => (
               <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 relative h-[calc(100vh-4rem)]">
                 <img
@@ -64,15 +64,38 @@ export default function ArabicLandingPage() {
           </div>
         
         </div>
+        <section className="mb-16 py-6">
+            <h2 className="mb-4 text-3xl font-semibold text-blue-800">لماذا تختارنا؟</h2>
+            <div className="grid gap-8 md:grid-cols-3">
+              {[
+                { title: 'طازج يومياً', description: 'نحصل على أسماكنا يومياً من الصيادين المحليين' },
+                { title: 'جودة عالية', description: 'نضمن أعلى معايير الجودة لجميع منتجاتنا' },
+                { title: 'توصيل سريع', description: 'نوصل طلبك إلى باب منزلك في أسرع وقت' },
+              ].map((item, index) => (
+                <div key={index} className="rounded-lg bg-white p-6 shadow-md">
+                  <h3 className="mb-2 text-xl font-semibold text-blue-700">{item.title}</h3>
+                  <p className="text-blue-600">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
+          <section className="flex flex-col text-center">
+            <h2 className="mb-6 text-3xl font-semibold text-blue-800">جاهز لتجربة أفضل الأسماك؟</h2>
+            <Link href="/store" passHref>
+              <Button size="lg" className="bg-blue-600 text-xl text-white hover:bg-blue-700">
+                تصفح منتجاتنا
+              </Button>
+            </Link>
+          </section>
         <section id="products" className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-[#002B5C] mb-12">منتجاتنا الممتازة</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { name: "دجاج كامل طازج", description: "دجاج كامل طازج من المزرعة ومصادر محلية" ,img:'/02.jpg'},
-                { name: "صدور الدجاج", description: "صدور دجاج قليلة الدهون وغنية بالبروتين" ,img:'/03.jpg'},
-                { name: "قطع الدجاج", description: "تشكيلة متنوعة من قطع الدجاج لتلبية جميع احتياجاتك الطهوية",img:'/04.jpg' },
+                { name: "سمك السلمون" ,description: "سمك كامل طازج من مصادر محلية" ,img:'/02.jpg'},
+                { name: "سمك دينيس", description: "اسماك طازجة وغنية بالبروتين" ,img:'/03.jpg'},
+                { name: "سمك كنعد", description: "تشكيلة متنوعة من الاسماك لتلبية جميع احتياجاتك الطهوية",img:'/04.jpg' },
               ].map((product, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>

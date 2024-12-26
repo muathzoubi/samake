@@ -2,120 +2,112 @@ type Product = {
   id: number;
   name: string;
   price: number;
-  category: string;
+  currency: string; // Added currency field
+  weight: number | string; // Adjusted to accommodate ranges if needed
+  unit: string;
   image: string;
-  keyword: string;
   description: string;
 };
 
-export const products: Product[] = [
+const products: Product[] = [
   {
     id: 1,
-    name: 'دجاج كاملة 700 جم',
-    price: 1.99,
-    category: 'منتجات طازجة',
-    image: '/700g.jpg',
-    keyword: 'دجاج كامل 700 جم',
-    description: 'دجاج طازج كامل يزن 700 جرام.'
+    name: 'سمك شعري',
+    price: 80,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك طازج شعري أحمر',
   },
   {
     id: 2,
-    name: 'دجاج كاملة 1000 جم',
-    price: 1.99,
-    category: 'منتجات طازجة',
-    image: '/1000g.jpg',
-    keyword: 'دجاج كامل 1 كجم',
-    description: 'دجاج طازج كامل يزن 1000 جرام.'
+    name: 'فيليه هامور',
+    price: 98,
+    currency: 'دينار كويتي',
+    weight: 1000,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'فيليه سمك طازج مع الليمون',
   },
   {
     id: 3,
-    name: 'دجاج كاملة 1200 جرام',
-    price: 1.99,
-    category: 'منتجات طازجة',
-    image: '/1200g.jpg',
-    keyword: 'دجاج كامل 1.2 كجم',
-    description: 'دجاج طازج كامل يزن 1200 جرام.'
+    name: 'سمك بوري البحر الأحمر',
+    price: 52.6,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك طازج من البحر الأحمر',
   },
   {
     id: 4,
-    name: 'فخذ دجاج علوي',
-    price: 2.99,
-    category: 'منتجات طازجة',
-    image: '/thigh.jpg',
-    keyword: 'فخذ دجاج علوي',
-    description: 'قطع من فخذ الدجاج العلوي الطازج.'
+    name: 'سمك البياض الأبيض',
+    price: 43.3,
+    currency: 'دينار كويتي',
+    weight: '800-1000', // Adjusted for the specified range
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك طازج مع التوابل',
   },
   {
     id: 5,
-    name: 'فخذ دجاج كامل',
-    price: 2.99,
-    category: 'منتجات طازجة',
-    image: '/leg.jpg',
-    keyword: 'فخذ دجاج كامل',
-    description: 'فخذ دجاج كامل طازج.'
+    name: 'سمك الماكريل',
+    price: 38,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك ماكريل طازج',
   },
   {
     id: 6,
-    name: 'دبوس',
-    price: 2.99,
-    category: 'منتجات طازجة',
-    image: '/drumstick.jpg',
-    keyword: 'دبوس دجاج',
-    description: 'قطع من دبوس الدجاج الطازج.'
+    name: 'سلمون مدخن شرائح رفيعة',
+    price: 51.3,
+    currency: 'دينار كويتي',
+    weight: 200,
+    unit: 'جرام مغلف',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'شرائح سلمون مدخن',
   },
   {
     id: 7,
-    name: 'صدر دجاج',
-    price: 4.1,
-    category: 'منتجات طازجة',
-    image: '/brest.jpg',
-    keyword: 'صدر دجاج',
-    description: 'قطع من صدر الدجاج الطازج.'
+    name: 'سمك السردين (السلفي)',
+    price: 40.25,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك سردين طازج',
   },
   {
     id: 8,
-    name: 'فيليه دجاج',
-    price: 1.99,
-    category: 'منتجات طازجة',
-    image: '/fillet.jpg',
-    keyword: 'فيليه دجاج',
-    description: 'قطع من فيليه الدجاج الطازج.'
+    name: 'سمك بلطي',
+    price: 32.2,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك بلطي طازج',
   },
   {
     id: 9,
-    name: 'أجنحة دجاج',
-    price: 1.99,
-    category: 'منتجات طازجة',
-    image: '/wings.jpg',
-    keyword: 'أجنحة دجاج',
-    description: 'أجنحة دجاج طازجة.'
+    name: 'سمك بوري كبير',
+    price: 140,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك بوري طازج كبير الحجم',
   },
   {
     id: 10,
-    name: 'قلوب دجاج',
-    price: 1.99,
-    category: 'منتجات طازجة',
-    image: '/hearts.jpg',
-    keyword: 'قلوب دجاج',
-    description: 'قلوب دجاج طازجة.'
+    name: 'سمك السلمون النرويجي',
+    price: 55,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/placeholder.svg?height=300&width=400',
+    description: 'سمك سلمون نرويجي طازج',
   },
-  {
-    id: 11,
-    name: 'كبدة دجاج',
-    price: 0.99,
-    category: 'منتجات طازجة',
-    image: '/liver.jpg',
-    keyword: 'كبدة دجاج',
-    description: 'كبدة دجاج طازجة.'
-  },
-  {
-    id: 12,
-    name: 'قوانص دجاج',
-    price: 0.99,
-    category: 'منتجات طازجة',
-    image: '/gizzards.jpg',
-    keyword: 'قوانص دجاج',
-    description: 'قوانص دجاج طازجة.'
-  }
 ];
-

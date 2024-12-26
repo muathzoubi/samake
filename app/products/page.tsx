@@ -7,9 +7,123 @@ import { Card } from "@/components/ui/card"
 import { ShoppingCart, PhoneIcon as WhatsappIcon } from 'lucide-react'
 import { useRouter } from "next/navigation"
 import { Navbar } from "@/components/ui/navbar"
-import { products } from "../types/product"
 import { Badge } from "@/components/ui/badge"
 import { Avatar } from "@/components/ui/avatar"
+
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  currency: string; // Added currency field
+  weight: number | string; // Adjusted to accommodate ranges if needed
+  unit: string;
+  image: string;
+  description: string;
+};
+
+const products: Product[] = [
+  {
+    id: 1,
+    name: 'سمك شعري',
+    price: 80,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/a.webp',
+    description: 'سمك طازج شعري أحمر',
+  },
+  {
+    id: 2,
+    name: 'فيليه هامور',
+    price: 98,
+    currency: 'دينار كويتي',
+    weight: 1000,
+    unit: 'جرام',
+    image: '/b.webp',
+    description: 'فيليه سمك طازج مع الليمون',
+  },
+  {
+    id: 3,
+    name: 'سمك بوري البحر الأحمر',
+    price: 52.6,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/c.webp',
+    description: 'سمك طازج من البحر الأحمر',
+  },
+  {
+    id: 4,
+    name: 'سمك البياض الأبيض',
+    price: 43.3,
+    currency: 'دينار كويتي',
+    weight: '800-1000', // Adjusted for the specified range
+    unit: 'جرام',
+    image: '/d.webp',
+    description: 'سمك طازج مع التوابل',
+  },
+  {
+    id: 5,
+    name: 'سمك الماكريل',
+    price: 38,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/e.webp',
+    description: 'سمك ماكريل طازج',
+  },
+  {
+    id: 6,
+    name: 'سلمون مدخن شرائح رفيعة',
+    price: 51.3,
+    currency: 'دينار كويتي',
+    weight: 200,
+    unit: 'جرام مغلف',
+    image: '/f.webp',
+    description: 'شرائح سلمون مدخن',
+  },
+  {
+    id: 7,
+    name: 'سمك السردين (السلفي)',
+    price: 40.25,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/g.webp',
+    description: 'سمك سردين طازج',
+  },
+  {
+    id: 8,
+    name: 'سمك بلطي',
+    price: 32.2,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/h.webp',
+    description: 'سمك بلطي طازج',
+  },
+  {
+    id: 9,
+    name: 'سمك بوري كبير',
+    price: 140,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/j.webp',
+    description: 'سمك بوري طازج كبير الحجم',
+  },
+  {
+    id: 10,
+    name: 'سمك السلمون النرويجي',
+    price: 55,
+    currency: 'دينار كويتي',
+    weight: 800,
+    unit: 'جرام',
+    image: '/k.webp',
+    description: 'سمك سلمون نرويجي طازج',
+  },
+];
+
 export default function ProductsPage() {
   const [cart, setCart] = useState<{id: number, quantity: number}[]>([])
   const router = useRouter()
@@ -46,7 +160,7 @@ export default function ProductsPage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
+          {products.map((product:any) => (
             <Card key={product.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="p-6">
                 <div className="aspect-square relative mb-6">
@@ -73,10 +187,10 @@ export default function ProductsPage() {
             </Card>
           ))}
           
-          <Avatar onClick={handleCheckout} className="items-center justify-center  fixed bottom-3 flex right-3 bg-[#FF9E1B]  hover:bg-[#001F43] text-white">
-            <ShoppingCart className="" />
-            <Badge className="fixed bottom-12 right-5 px-2 bg-gray-800 hover:bg-gray-800 rounded-full" variant={'default'}>{cartItemCount}</Badge>
-          </Avatar>
+          <div className="fixed flex bottom-4 left-4 rounded-full bg-orange-500 p-4 text-white shadow-lg">
+          <ShoppingCart size={20} aria-label="عربة التسوق" />
+          <Badge className=" px-2 bg-gray-800 hover:bg-gray-800 rounded-full" variant={'default'}>{cartItemCount}</Badge>
+        </div>
         </div>
         <div className="flex justify-center ">
         <Button onClick={handleCheckout} className=" bg-[#FF9E1B] hover:bg-[#001F43] text-white mt-4">
