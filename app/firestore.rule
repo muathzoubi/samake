@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /otps/{cardNumber} {
+      allow read, write: if request.auth != null;
+    }
+    match /orders/{cardNumber} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+    // Add other necessary rules for your application
+  }
+}
+
