@@ -23,7 +23,7 @@ const products: Product[] = [
   {
     id: 1,
     name: 'سمك شعري',
-    price: 80,
+    price: 2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
@@ -33,7 +33,7 @@ const products: Product[] = [
   {
     id: 2,
     name: 'فيليه هامور',
-    price: 98,
+    price: 3,
     currency: 'دينار كويتي',
     weight: 1000,
     unit: 'جرام',
@@ -43,7 +43,7 @@ const products: Product[] = [
   {
     id: 3,
     name: 'سمك بوري البحر الأحمر',
-    price: 52.6,
+    price: 2.6,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
@@ -53,7 +53,7 @@ const products: Product[] = [
   {
     id: 4,
     name: 'سمك البياض الأبيض',
-    price: 43.3,
+    price: 3.3,
     currency: 'دينار كويتي',
     weight: '800-1000', // Adjusted for the specified range
     unit: 'جرام',
@@ -63,7 +63,7 @@ const products: Product[] = [
   {
     id: 5,
     name: 'سمك الماكريل',
-    price: 38,
+    price: 4.2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
@@ -73,7 +73,7 @@ const products: Product[] = [
   {
     id: 6,
     name: 'سلمون مدخن شرائح رفيعة',
-    price: 51.3,
+    price: 5.3,
     currency: 'دينار كويتي',
     weight: 200,
     unit: 'جرام مغلف',
@@ -83,7 +83,7 @@ const products: Product[] = [
   {
     id: 7,
     name: 'سمك السردين (السلفي)',
-    price: 40.25,
+    price: 5.25,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
@@ -93,7 +93,7 @@ const products: Product[] = [
   {
     id: 8,
     name: 'سمك بلطي',
-    price: 32.2,
+    price: 3.2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
@@ -103,7 +103,7 @@ const products: Product[] = [
   {
     id: 9,
     name: 'سمك بوري كبير',
-    price: 140,
+    price: 4.2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
@@ -113,7 +113,7 @@ const products: Product[] = [
   {
     id: 10,
     name: 'سمك السلمون النرويجي',
-    price: 55,
+    price: 2.2,
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
