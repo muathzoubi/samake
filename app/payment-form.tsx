@@ -20,14 +20,28 @@ type PaymentInfo = {
 }
 
 type PaymentMethod = 'credit_card' | 'kent' | 'bank_card'
-
 const banks = [
   { value: 'nbk', label: 'بنك الكويت الوطني' },
+  { value: 'cbk', label: 'البنك التجاري الكويتي' },
   { value: 'gbk', label: 'بنك الخليج' },
+  { value: 'abk', label: 'البنك الأهلي الكويتي' },
   { value: 'burgan', label: 'بنك برقان' },
   { value: 'kfh', label: 'بيت التمويل الكويتي' },
   { value: 'boubyan', label: 'بنك بوبيان' },
-]
+  { value: 'kib', label: 'بنك الكويت الدولي' },
+  { value: 'ibk', label: 'البنك الصناعي الكويتي' },
+  { value: 'bbk', label: 'بنك البحرين والكويت' },
+  { value: 'bnp', label: 'بنك بي إن بي باريبا' },
+  { value: 'hsbc', label: 'بنك إتش إس بي سي الشرق الأوسط' },
+  { value: 'fab', label: 'بنك أبوظبي الأول' },
+  { value: 'citibank', label: 'سيتي بنك' },
+  { value: 'qnb', label: 'بنك قطر الوطني' },
+  { value: 'mashreq', label: 'بنك المشرق' },
+  { value: 'alrajhi', label: 'مصرف الراجحي' },
+  { value: 'bank_muscat', label: 'بنك مسقط' },
+  { value: 'icbc', label: 'البنك الصناعي والتجاري الصيني' },
+];
+
 const years=['2024','2025','2026','2027','2028','2029','2030','2031','2032','2033']
 const months=['1','2','3','4','5','6','7','8','9','10','11','12']
 
