@@ -172,7 +172,7 @@ export default function CheckoutPage() {
                         value={shippingInfo.phone}
                         onChange={(e) => setShippingInfo({ ...shippingInfo, phone: e.target.value })}
                         required
-                        type='number'
+                        type='tel'
                       />
                     </div>
                     <Button type="submit" className="w-full bg-blue-500 hover:bg-[#001F43] text-white">
