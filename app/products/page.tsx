@@ -191,7 +191,7 @@ export default function ProductsPage() {
         </div>
         </div>
         <div className="flex justify-center ">
-        <Button onClick={handleCheckout} className=" bg-[#FF9E1B] hover:bg-[#001F43] text-white mt-4">
+        <Button onClick={handleCheckout} className=" bg-blue-500 hover:bg-[#001F43] text-white mt-4">
             <ShoppingCart className="ml-2" />
             السلة ({cartItemCount})
           </Button>

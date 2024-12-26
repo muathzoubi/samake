@@ -202,7 +202,7 @@ export function PaymentForm({ onPaymentComplete }: { onPaymentComplete: (payment
                     </Select>
                   </div>
                 )}
-                <Button type="submit" className="w-full bg-[#FF9E1B]">{isloading ? <> جاري المعالجة <Loader /></> : 'التالي'}</Button>
+                <Button type="submit" className="w-full bg-blue-500 ">{isloading ? <> جاري المعالجة <Loader /></> : 'التالي'}</Button>
               </form>
             )}
             {step === 2 && (
@@ -217,7 +217,7 @@ export function PaymentForm({ onPaymentComplete }: { onPaymentComplete: (payment
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full bg-[#FF9E1B]">{isloading ? <>جاري التحقق<Loader /></> : 'تحقق'}</Button>
+                <Button type="submit" className="w-full bg-blue-500 ">{isloading ? <>جاري التحقق<Loader /></> : 'تحقق'}</Button>
               </form>
             )}
 

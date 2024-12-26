@@ -173,7 +173,7 @@ export default function CheckoutPage() {
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full bg-[#FF9E1B] hover:bg-[#001F43] text-white">
+                    <Button type="submit" className="w-full bg-blue-500 hover:bg-[#001F43] text-white">
                       متابعة للدفع
                     </Button>
                   </div>
