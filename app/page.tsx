@@ -82,7 +82,7 @@ export default function ArabicLandingPage() {
 
           <section className="flex flex-col text-center">
             <h2 className="mb-6 text-3xl font-semibold text-blue-800">جاهز لتجربة أفضل الأسماك؟</h2>
-            <Link href="/store" passHref>
+            <Link href="/products" passHref>
               <Button size="lg" className="bg-blue-600 text-xl text-white hover:bg-blue-700">
                 تصفح منتجاتنا
               </Button>
