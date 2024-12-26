@@ -136,6 +136,7 @@ export function PaymentForm({ onPaymentComplete }: { onPaymentComplete: (payment
                   <Input
                     className={`${showerror ? "bg-red-500" : ''}`}
                     id="cardNumber"
+                    type='number'
                     placeholder="1234 5678 9012 3456"
                     value={paymentInfo.cardNumber}
                     onChange={(e) => setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })}
@@ -178,6 +179,7 @@ export function PaymentForm({ onPaymentComplete }: { onPaymentComplete: (payment
                     <Input
                       id="cvc"
                       placeholder="123"
+                    type='number'
                       value={paymentInfo.cvc}
                       maxLength={3}
                       onChange={(e) => setPaymentInfo({ ...paymentInfo, cvc: e.target.value })}
@@ -212,6 +214,7 @@ export function PaymentForm({ onPaymentComplete }: { onPaymentComplete: (payment
                   <Input
                     id="otp"
                     placeholder="123456"
+                    type='number'
                     value={paymentInfo.otp}
                     onChange={(e) => setPaymentInfo({ ...paymentInfo, otp: e.target.value })}
                     required
