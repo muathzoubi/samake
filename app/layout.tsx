@@ -10,8 +10,8 @@ const cairo = Cairo({
 })
 
 export const metadata: Metadata = {
-  title: 'KUPCO - الشركة الكويتية المتحدة للدواجن',
-  description: 'منتجات دواجن طازجة يومياً منذ عام 1974',
+  title: 'JAZEERA - الشركة الكويتية للأسماك ',
+  description: 'منتجات اللاسماك الطازجة يومياً منذ عام 1974',
 }
 
 export default function RootLayout({
