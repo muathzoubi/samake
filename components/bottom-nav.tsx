@@ -5,7 +5,7 @@ import { useCart } from './cart-provider'
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
 
-export function BottomNav(props:{handleCheckout:any}) {
+export function BottomNav(props:{handleCheckout?:any}) {
   const { total,items } = useCart()
 
   return (

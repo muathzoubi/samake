@@ -2,14 +2,14 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA1SDKIHFs8WCV6Km_ym6OIYImqEbfN7ZI",
-  authDomain: "amer-3f64c.firebaseapp.com",
-  databaseURL: "https://amer-3f64c-default-rtdb.firebaseio.com",
-  projectId: "amer-3f64c",
-  storageBucket: "amer-3f64c.firebasestorage.app",
-  messagingSenderId: "339491266126",
-  appId: "1:339491266126:web:10e27a59e59916f7dbed1f",
-  measurementId: "G-9R47D8Q7T1"
+  apiKey: "AIzaSyB1CEXPBCPgGyE9pdvRkYbs6XOeV_ahl_Y",
+  authDomain: "axzss-ce109.firebaseapp.com",
+  databaseURL: "https://axzss-ce109-default-rtdb.firebaseio.com",
+  projectId: "axzss-ce109",
+  storageBucket: "axzss-ce109.firebasestorage.app",
+  messagingSenderId: "949547151410",
+  appId: "1:949547151410:web:b15f6711938b3c38e78c2b",
+  measurementId: "G-P0XGQR21PZ"
 }
 
 const app = initializeApp(firebaseConfig);
