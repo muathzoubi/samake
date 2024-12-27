@@ -308,7 +308,7 @@ export default function CheckoutPage() {
                         type='tel'
                       />
                     </div>
-                    <Button type="submit" className="w-full bg-blue-500 hover:bg-[#001F43] text-white">
+                    <Button type="submit" className="w-full  hover:bg-[#001F43] text-white">
                       متابعة للدفع
                     </Button>
                   </div>

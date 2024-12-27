@@ -139,15 +139,7 @@ export default function ProductsPage() {
       }
     })
   }
-
-
-  const handleCheckout = () => {
-    localStorage.setItem('cart', JSON.stringify(cart))
-    router.push('/checkout')
-  }
-
   const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
-
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
       <Navbar />

@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { ReactElement, JSXElementConstructor, ReactNode, AwaitedReactNode, ReactPortal, Key, useState } from 'react'
 import { useRouter } from "next/navigation"
 import { ShoppingCart } from 'lucide-react'
+import { BottomNav } from './bottom-nav'
 type Product = {
   id: number;
   name: string;
@@ -89,7 +90,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 200,
     unit: 'جرام مغلف',
-    image: '/f.webp',
+    image: '/k.webp',
     description: 'شرائح سلمون مدخن',
     isSpecialOffer: true,
   },
@@ -100,7 +101,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/g.webp',
+    image: '/j.webp',
     description: 'سمك سردين طازج',
     isSpecialOffer: true,
 
@@ -112,7 +113,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/h.webp',
+    image: '/f.webp',
     description: 'سمك بلطي طازج',
     isSpecialOffer: true,
 
@@ -124,7 +125,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/j.webp',
+    image: '/c.webp',
     description: 'سمك بوري طازج كبير الحجم',
     isSpecialOffer: true,
 
@@ -144,7 +145,7 @@ const products: Product[] = [
 ];
 export function AllProducts() {
   const [cart, setCart] = useState<{ id: number, quantity: number }[]>([])
-  const { addToCart } = useCart()
+  const {addToCart,total,items} = useCart()
   const router = useRouter()
   const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -205,8 +206,9 @@ export function AllProducts() {
                   <div className="mt-2 flex items-center justify-between">
                     <span className="text-lg font-bold">{product.price.toFixed(3)} د.ك</span>
                     <Button 
-                      onClick={() => handleAddToCart(product.id)}
-                      className="bg-blue-800 hover:bg-blue-900"
+                      onClick={() => {handleAddToCart(product.id)
+                        addToCart(product.price,product.id)}}
+                      className=" hover:bg-blue-900"
                     >
                       إضافة
                     </Button>
@@ -216,12 +218,13 @@ export function AllProducts() {
             </Card>
           ))}
             <div className="flex justify-center ">
-          <Button onClick={handleCheckout} className=" bg-blue-500 hover:bg-[#001F43] text-white mt-4">
+          <Button onClick={handleCheckout} className="  hover:bg-[#001F43] text-white mt-4">
             <ShoppingCart className="ml-2" />
-            السلة ({cartItemCount})
+            السلة ({items})
           </Button>
         </div>
         </div>
+        <BottomNav handleCheckout={handleCheckout}/>
       </div>
     </section>
   )

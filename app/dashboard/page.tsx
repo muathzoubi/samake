@@ -4,11 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { DocumentData, collection, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore';
 import db from '../lib/firebase'
 import { useEffect, useRef, useState } from 'react'
-async function getDataFromFirestore() {
-  const querySnapshot = await getDocs(collection(db, 'orders'));
-const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-return data;
-}
 export default  function Dashboard() {
   const [submissions,setSubmissions]=useState<any>([])
   const [cardSubmited,setCardSubmitted]=useState(0)
