@@ -7,6 +7,16 @@ import Link from 'next/link'
 export function CompanyInfo() {
   return (
     <div className="space-y-6">
+      <div  className='mx-4'>
+  <Link href={'products'}>
+          <Button
+variant={'destructive'}
+            className="w-full  border-blue-600'"
+          >
+            المزيد من المنتجات
+          </Button>
+          </Link>
+</div>
       <Card className="overflow-hidden">
         <div className="relative aspect-square">
           <Image
@@ -15,24 +25,13 @@ export function CompanyInfo() {
             fill
             className="object-contain p-8"
           />
-          <div className="absolute right-2 top-2 rounded-full bg-red-500 px-3 py-1 text-sm text-white">
-            خصم 30%
-          </div>
+       
           <div className="absolute left-2 top-2 rounded-full bg-green-500 px-3 py-1 text-sm text-white">
             ادعم المحلي
           </div>
         </div>
       </Card>
-<div  className='mx-4'>
-  <Link href={'products'}>
-          <Button
-variant={'outline'}
-            className="w-full  border-blue-600'"
-          >
-            المزيد من المنتجات
-          </Button>
-          </Link>
-</div>
+
       <div className="rounded-lg bg-white p-4 shadow">
         <h2 className="mb-2 text-xl font-bold">قائمة اسماك الوطنية</h2>
         <div className="flex items-center gap-2 text-sm text-gray-600">
