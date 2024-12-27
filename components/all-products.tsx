@@ -167,14 +167,10 @@ export function AllProducts() {
     localStorage.setItem('cart', JSON.stringify(cart))
     router.push('/checkout')
   }
-
-
-
   return (
     <section className="py-12 h-full">
       <div className=" mx-auto px-4">
         <h2 className="mb-8 text-2xl font-bold">جميع المنتجات</h2>
-
         <div className=" w-full rounded-md border p-4">
           <div className="space-y-4">
             {products.map((product) => (
