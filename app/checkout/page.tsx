@@ -247,7 +247,7 @@ const {total,items}=useCart()
             setStep(2)
           }, 3000)}}
         >
-{!loading?         `متابعة الدفع (${total})`:"الرجاء الانتظار" }
+{!loading?         `متابعة الدفع (${total})د.ك`:"الرجاء الانتظار" }
         </Button>
       </div>):
         <PaymentForm onPaymentComplete={handlePaymentComplete}/>
