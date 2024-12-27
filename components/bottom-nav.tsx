@@ -9,8 +9,7 @@ export function BottomNav(props:{handleCheckout?:any}) {
   const { total,items } = useCart()
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 border-t p-4 rounded-full	  ">
-      <div className="flex items-center justify-between bg-blue-900 p-2 text-white rounded-full	">
+      <div className="fixed bottom-0 left-0 right-0 border-t m-1 rounded-full	 flex items-center justify-between bg-blue-900 p-2 text-white rounded-full	">
       
         <div className="flex items-center gap-2">
         
@@ -22,10 +21,9 @@ export function BottomNav(props:{handleCheckout?:any}) {
         <div className=" text-white">{total.toFixed(3)}د.ك </div>
         </div>
         <Button variant={'ghost'} className='rounded-full	' onClick={props.handleCheckout}>
-       متابعة عملية الدفع  {">"}
+       أتمام الطلب  {">"}
         </Button>
       </div>
-    </div>
   )
 }
 

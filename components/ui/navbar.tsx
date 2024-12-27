@@ -12,13 +12,13 @@ export function Navbar() {
   return (
     <nav className="bg-white border-b">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-12">
           <Link href="/" className="flex-shrink-0">
             <img
               src="/nfc2.png"
               alt="KUPCO Logo"
               width={60}
-              height={100}
+              height={60}
               className="h-6 w-32"
             />
           </Link>
