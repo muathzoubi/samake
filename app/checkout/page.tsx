@@ -10,6 +10,7 @@ import { useCart } from '@/components/cart-provider'
 import PaymentForm from '../payment-form'
 import { addDoc, collection } from 'firebase/firestore'
 import db from '../lib/firebase'
+import { Input } from '@/components/ui/input'
 
 type LocationType = 'home' | 'work' | 'client'
 type PaymentType = 'full' | 'partial'
@@ -95,6 +96,79 @@ const {total,items}=useCart()
               <span>البيت</span>
             </button>
           </div>
+          <div className="space-y-4 bg-white p-4 rounded-lg">
+      <h3 className="text-lg font-bold">تفاصيل العنوان</h3>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="area">المنطقة</Label>
+          <Input
+            id="area"
+            name="area"
+            placeholder="مثال: السالمية"
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="block">القطعة</Label>
+          <Input
+            id="block"
+            name="block"
+            placeholder="مثال: 12"
+            required
+          />
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="street">الشارع</Label>
+          <Input
+            id="street"
+            name="street"
+            placeholder="مثال: شارع سالم المبارك"
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="house">المنزل</Label>
+          <Input
+            id="house"
+            name="house"
+            placeholder="مثال: 24"
+            required
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="floor">الطابق (اختياري)</Label>
+          <Input
+            id="floor"
+            name="floor"
+            placeholder="مثال: الأول"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="apartment">الشقة (اختياري)</Label>
+          <Input
+            id="apartment"
+            name="apartment"
+            placeholder="مثال: 12"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="notes">ملاحظات إضافية (اختياري)</Label>
+        <Input
+          id="notes"
+          name="notes"
+          placeholder="مثال: بجانب المسجد"
+          className="h-20"
+        />
+      </div>
+    </div>
         </div>
 
         {/* Payment Method */}
