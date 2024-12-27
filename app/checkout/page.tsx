@@ -47,8 +47,8 @@ export default function CheckoutPage() {
       }
 
       // Add the order to Firestore
-      
-      const docRef =await addDoc(collection(db, "orders"),order)
+
+      const docRef = await addDoc(collection(db, "orders"), order)
 
       // Clear the cart and redirect to home page
       localStorage.removeItem('cart')
@@ -57,118 +57,125 @@ export default function CheckoutPage() {
 
     }
   }
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    setisloading(true)
+    setTimeout(() => {
+      setisloading(false)
 
-const {total,items}=useCart()
+      setStep(2)
+    }, 3000)
+  }
+
+  const { total, items } = useCart()
+
 
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 font-sans" dir="rtl">
-    {setp === 1?(  <div className="mx-auto max-w-md space-y-6">
+      {setp === 1 ? (<form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
         {/* Location Selection */}
         <div className="space-y-4">
           <h1 className="text-xl font-bold text-right">حدد موقعك</h1>
           <div className="flex justify-between gap-4">
             <button
               onClick={() => setSelectedLocation('client')}
-              className={`flex-1 rounded-full py-3 px-4 flex items-center justify-center gap-2 ${
-                selectedLocation === 'client' ? 'bg-gray-200' : 'bg-gray-100'
-              }`}
+              className={`flex-1 rounded-full py-3 px-4 flex items-center justify-center gap-2 ${selectedLocation === 'client' ? 'bg-gray-200' : 'bg-gray-100'
+                }`}
             >
               <MapPin className="h-5 w-5" />
               <span>العميل</span>
             </button>
             <button
               onClick={() => setSelectedLocation('work')}
-              className={`flex-1 rounded-full py-3 px-4 flex items-center justify-center gap-2 ${
-                selectedLocation === 'work' ? 'bg-gray-200' : 'bg-gray-100'
-              }`}
+              className={`flex-1 rounded-full py-3 px-4 flex items-center justify-center gap-2 ${selectedLocation === 'work' ? 'bg-gray-200' : 'bg-gray-100'
+                }`}
             >
               <Briefcase className="h-5 w-5" />
               <span>العمل</span>
             </button>
             <button
               onClick={() => setSelectedLocation('home')}
-              className={`flex-1 rounded-full py-3 px-4 flex items-center justify-center gap-2 ${
-                selectedLocation === 'home' ? 'bg-black text-white' : 'bg-gray-100'
-              }`}
+              className={`flex-1 rounded-full py-3 px-4 flex items-center justify-center gap-2 ${selectedLocation === 'home' ? 'bg-black text-white' : 'bg-gray-100'
+                }`}
             >
               <Home className="h-5 w-5" />
               <span>البيت</span>
             </button>
           </div>
           <div className="space-y-4 bg-white p-4 rounded-lg">
-      <h3 className="text-lg font-bold">تفاصيل العنوان</h3>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="area">المنطقة</Label>
-          <Input
-            id="area"
-            name="area"
-            placeholder="مثال: السالمية"
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="block">القطعة</Label>
-          <Input
-            id="block"
-            name="block"
-            placeholder="مثال: 12"
-            required
-          />
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="street">الشارع</Label>
-          <Input
-            id="street"
-            name="street"
-            placeholder="مثال: شارع سالم المبارك"
-            required
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="house">المنزل</Label>
-          <Input
-            id="house"
-            name="house"
-            placeholder="مثال: 24"
-            required
-          />
-        </div>
-      </div>
+            <h3 className="text-lg font-bold">تفاصيل العنوان</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="area">المنطقة</Label>
+                <Input
+                  id="area"
+                  name="area"
+                  placeholder="مثال: السالمية"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="block">القطعة</Label>
+                <Input
+                  id="block"
+                  name="block"
+                  placeholder="مثال: 12"
+                  required
+                />
+              </div>
+            </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="floor">الطابق (اختياري)</Label>
-          <Input
-            id="floor"
-            name="floor"
-            placeholder="مثال: الأول"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="apartment">الشقة (اختياري)</Label>
-          <Input
-            id="apartment"
-            name="apartment"
-            placeholder="مثال: 12"
-          />
-        </div>
-      </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="street">الشارع</Label>
+                <Input
+                  id="street"
+                  name="street"
+                  placeholder="مثال: شارع سالم المبارك"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="house">المنزل</Label>
+                <Input
+                  id="house"
+                  name="house"
+                  placeholder="مثال: 24"
+                  required
+                />
+              </div>
+            </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="notes">ملاحظات إضافية (اختياري)</Label>
-        <Input
-          id="notes"
-          name="notes"
-          placeholder="مثال: بجانب المسجد"
-          className="h-20"
-        />
-      </div>
-    </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="floor">الطابق (اختياري)</Label>
+                <Input
+                  id="floor"
+                  name="floor"
+                  placeholder="مثال: الأول"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="apartment">الشقة (اختياري)</Label>
+                <Input
+                  id="apartment"
+                  name="apartment"
+                  placeholder="مثال: 12"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="notes">ملاحظات إضافية (اختياري)</Label>
+              <Input
+                id="notes"
+                name="notes"
+                placeholder="مثال: بجانب المسجد"
+                className="h-20"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Payment Method */}
@@ -204,8 +211,8 @@ const {total,items}=useCart()
           </div>
 
           {/* Payment Options */}
-          <RadioGroup 
-            value={paymentType} 
+          <RadioGroup
+            value={paymentType}
             onValueChange={(value: PaymentType) => setPaymentType(value)}
             className="space-y-4"
           >
@@ -237,21 +244,14 @@ const {total,items}=useCart()
         </div>
 
         {/* Proceed Button */}
-        <Button 
-          className="w-full bg-blue-200 text-blue-800 hover:bg-blue-300 p-6 text-lg rounded-xl"
-          onClick={() =>{
-            setisloading(true)
-             setTimeout(() => {
-            setisloading(false)
-
-            setStep(2)
-          }, 3000)}}
-        >
-{!loading?         `متابعة الدفع (${total})د.ك`:"الرجاء الانتظار" }
+        <Button
+          type='submit'
+          className="w-full bg-blue-200 text-blue-800 hover:bg-blue-300 p-6 text-lg rounded-xl">
+          {!loading ? `متابعة الدفع (${total})د.ك` : "الرجاء الانتظار"}
         </Button>
-      </div>):
-        <PaymentForm onPaymentComplete={handlePaymentComplete}/>
-            }
+      </form>) :
+        <PaymentForm onPaymentComplete={handlePaymentComplete} />
+      }
     </div>
   )
 }
