@@ -251,7 +251,6 @@ export default function PaymentForm({
                     <button
                       type="button"
                       className=" border  bg-gray-400 rounded-md h-6 hover:bg-gray-100"
-                      onClick={() => window.history.back()}
                     >
                       إلغاء
                     </button>

