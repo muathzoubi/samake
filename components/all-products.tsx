@@ -145,7 +145,7 @@ const products: Product[] = [
 ];
 export function AllProducts() {
   const [cart, setCart] = useState<{ id: number, quantity: number }[]>([])
-  const {addToCart,total,items} = useCart()
+  const { addToCart, total, items } = useCart()
   const router = useRouter()
   const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -168,63 +168,44 @@ export function AllProducts() {
     router.push('/checkout')
   }
 
-  
+
 
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-4">
+    <section className="py-12 h-full">
+      <div className=" mx-auto px-4">
         <h2 className="mb-8 text-2xl font-bold">جميع المنتجات</h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {products.map((product: any,index:number) => (
-            <Card key={index} className="overflow-hidden">
-              <div className="aspect-video relative">
-                <Image
-                  src={product.image}
-                  alt={product.name?.toString()!}
-                  fill
-                  className="object-cover"
-                />
-                {product.isSpecialOffer && (
-                  <Badge className="absolute right-2 top-2 bg-red-500">
-                    عرض خاص
-                  </Badge>
-                )}
-              </div>
-              <CardContent className="p-4">
-                <h3 className="text-xl font-semibold">{product.name}</h3>
-                <p className="mt-1 text-sm text-gray-600">{product.description}</p>
-                {product.sizes ? (
-                  <div className="mt-2 grid gap-2">
-                    {product.sizes.map((size: { size: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; price: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined }, idx: Key | null | undefined) => (
-                      <div key={idx} className="flex items-center justify-between text-sm">
-                        <span>{size.size}</span>
-                        <span>{size.price} د.ك</span>
-                      </div>
-                    ))}
+
+        <div className=" w-full rounded-md border p-4">
+          <div className="space-y-4">
+            {products.map((product) => (
+              <Card key={product.id} className="flex overflow-hidden">
+                <div className="w-1/4">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={200}
+                    height={100}
+                    className="w-full object-cover rounded-lg my-4 "
+                  />
+                </div>
+                <CardContent className="flex-1 p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-sm">{product.name}</h3>
+                    <span className="text-sm font-bold">د.ك{product.price.toFixed(2)}</span>
                   </div>
-                ) : (
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="text-lg font-bold">{product.price.toFixed(3)} د.ك</span>
-                    <Button 
-                      onClick={() => {handleAddToCart(product.id)
-                        addToCart(product.price,product.id)}}
-                      className=" hover:bg-blue-900"
-                    >
-                      إضافة
-                    </Button>
+                  <p className="text-sm text-gray-600 mb-4">{product.description}</p>
+                  <div className='flex justify-end '>
+                    <Button size="sm" variant={'outline'} className='h-6 w-6' onClick={() => {
+                      handleAddToCart(product.id)
+                      addToCart(product.price, product.id)}} >+</Button>
+                    <Button size="sm" variant={'outline'} className='h-6 w-6'>1</Button>
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-            <div className="flex justify-center ">
-          <Button onClick={handleCheckout} className="  hover:bg-[#001F43] text-white mt-4">
-            <ShoppingCart className="ml-2" />
-            السلة ({items})
-          </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-        </div>
-        <BottomNav handleCheckout={handleCheckout}/>
+        <BottomNav handleCheckout={handleCheckout} />
       </div>
     </section>
   )

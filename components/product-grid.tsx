@@ -60,7 +60,7 @@ export function ProductGrid() {
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-lg font-bold">{product.price.toFixed(3)} د.ك</span>
                   <Button 
-                    onClick={() => addToCart(product.price)}
+                    onClick={() => addToCart(product.price,index)}
                     className="bg-blue-800 hover:bg-blue-900"
                   >
                     إضافة

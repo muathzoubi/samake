@@ -7,9 +7,9 @@ import { BottomNav } from '@/components/bottom-nav'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="h-full bg-gray-50 ">
       <Header />
-      <main className="container mx-auto px-4 pb-20">
+      <main className="h-full mx-auto px-4 pb-20">
         <Hero />
         <Categories />
         <Features />

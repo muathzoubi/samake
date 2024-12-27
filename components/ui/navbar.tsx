@@ -15,11 +15,11 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex-shrink-0">
             <img
-              src="/jazz-logo.png"
+              src="/nfc2.png"
               alt="KUPCO Logo"
-              width={120}
-              height={60}
-              className="h-12 w-auto"
+              width={60}
+              height={100}
+              className="h-6 w-32"
             />
           </Link>
 

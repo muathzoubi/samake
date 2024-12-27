@@ -14,7 +14,7 @@ export function Header() {
         
         <div className="hidden md:block">
           <Image
-            src="/placeholder.svg"
+            src="/pnfc2.png"
             alt="الشركة الوطنية للأسماك"
             width={200}
             height={50}

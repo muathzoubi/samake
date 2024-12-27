@@ -1,4 +1,5 @@
 import { Card } from '@/components/ui/card'
+import { Badge } from './ui/badge'
 
 const features = [
   {
@@ -19,10 +20,10 @@ export function Features() {
   return (
     <div className="my-8 grid grid-cols-3 gap-4">
       {features.map((feature, index) => (
-        <Card key={index} className="flex flex-col items-center p-4 text-center">
-          <span className="text-2xl">{feature.icon}</span>
-          <span className="mt-2 text-sm font-medium">{feature.title}</span>
-        </Card>
+        <Badge variant={'outline'} key={index} className="flex  text-center">
+          <span className="p-1">{feature.icon}</span>
+          <span className="mt-2 font-medium">{feature.title}</span>
+        </Badge>
       ))}
     </div>
   )

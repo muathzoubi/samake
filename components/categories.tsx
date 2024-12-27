@@ -23,13 +23,13 @@ const categories = [
 
 export function Categories() {
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+    <div className="grid grid-cols-4 gap-4 md:grid-cols-4">
       {categories.map((category, index) => (
-        <Card key={index} className="overflow-hidden p-4">
+        <div key={index} className="overflow-hidden p-4">
           <div className="flex flex-col items-center">
-            <div className="relative mb-3 h-24 w-24 overflow-hidden rounded-full">
+            <div className="relative mb-3 h-14 w-14 overflow-hidden rounded-full">
               {category.isOffer ? (
-                <div className="flex h-full w-full items-center justify-center bg-red-500 text-2xl text-white">
+                <div className="flex h-full w-full items-center p-2  justify-center bg-red-500 text-white">
                   %
                 </div>
               ) : (
@@ -41,9 +41,10 @@ export function Categories() {
                 />
               )}
             </div>
-            <span className="text-center font-semibold">{category.name}</span>
+            <span className="text-center ">{category.name}</span>
+
           </div>
-        </Card>
+        </div>
       ))}
     </div>
   )

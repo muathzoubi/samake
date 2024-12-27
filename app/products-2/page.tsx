@@ -7,6 +7,7 @@ import { ShoppingCart, PhoneIcon as WhatsappIcon } from 'lucide-react'
 import { useRouter } from "next/navigation"
 import { Navbar } from "@/components/ui/navbar"
 import { Badge } from "@/components/ui/badge"
+import { Categories } from "@/components/categories"
 
 
 export default function ProductsPage() {
@@ -41,7 +42,7 @@ export default function ProductsPage() {
       <main className="container mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-12">
           <h1 className="text-4xl font-bold text-[#002B5C] w-full">المنتجات الطازجة</h1>
-
+<Categories/>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

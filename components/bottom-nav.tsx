@@ -9,18 +9,21 @@ export function BottomNav(props:{handleCheckout?:any}) {
   const { total,items } = useCart()
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 border-t bg-white p-4">
-      <div className="flex items-center justify-between">
-        <Button variant={'default'} onClick={props.handleCheckout}>
-          <CheckCheck/>
-        </Button>
+    <div className="fixed bottom-0 left-0 right-0 border-t p-4 rounded-full	  ">
+      <div className="flex items-center justify-between bg-blue-900 p-2 text-white rounded-full	">
+      
         <div className="flex items-center gap-2">
-          <span>{items===0?'سلة المنتجات فارغة':"عدد المنتجات في السلة"}</span>
-          <Badge className="flex h-6 w-6 items-center justify-center rounded-full ">
+        
+        </div>
+        <div className="flex">
+        <Badge variant={'outline'} className="flex mx-2 text-white h-6 w-6 items-center justify-center rounded-full ">
             {items}
           </Badge>
+        <div className=" text-white">{total.toFixed(3)}د.ك </div>
         </div>
-        <div className="text-blue-900">د.ك {total.toFixed(3)}</div>
+        <Button variant={'ghost'} className='rounded-full	' onClick={props.handleCheckout}>
+       متابعة عملية الدفع  {">"}
+        </Button>
       </div>
     </div>
   )

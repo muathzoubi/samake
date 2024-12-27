@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { PaymentForm } from '../payment-form'
 import db from '../lib/firebase'
 import { validate } from '@/lib/utils'
+import PaymentForm from '../payment-form'
 type Product = {
   id: number;
   name: string;
@@ -228,13 +228,15 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
+   <div>
       <Navbar />
 
       <main className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-[#002B5C] mb-12 text-center">إتمام الطلب</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card>
+         {
+         step===2 ?null:( <Card>
             <CardHeader>
               <CardTitle>ملخص الطلب</CardTitle>
             </CardHeader>
@@ -262,6 +264,8 @@ export default function CheckoutPage() {
               </div>
             </CardContent>
           </Card>
+          )
+}
 
           {step === 1 ? (
             <Card>
@@ -308,7 +312,7 @@ export default function CheckoutPage() {
                         type='tel'
                       />
                     </div>
-                    <Button type="submit" className="w-full  hover:bg-[#001F43] text-white">
+                    <Button type="submit" className="w-full bg-blue-500 hover:bg-[#001F43] text-white">
                       متابعة للدفع
                     </Button>
                   </div>
@@ -320,6 +324,7 @@ export default function CheckoutPage() {
           )}
         </div>
       </main>
+    </div>
     </div>
   )
 }

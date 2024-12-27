@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation"
 import { Navbar } from "@/components/ui/navbar"
 import { Badge } from "@/components/ui/badge"
 import { AllProducts } from "@/components/all-products"
+import { Features } from "@/components/features"
+import { Hero } from "@/components/hero"
+import { Categories } from "@/components/categories"
 
 type Product = {
   id: number;
@@ -144,11 +147,13 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-gray-50" dir="rtl">
       <Navbar />
       
-      <main className="container mx-auto px-4 py-12">
+      <main className=" mx-auto px-4 py-12 min-h-screen ">
         <div className="flex justify-between items-center mb-12">
           <h1 className="text-4xl font-bold text-[#002B5C] w-full">المنتجات الطازجة</h1>
+          
         </div>
-      <AllProducts/>
+        <Categories/>
+      <AllProducts />
       </main>
     </div>
   )
