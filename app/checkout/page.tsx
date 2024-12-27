@@ -72,7 +72,7 @@ export default function CheckoutPage() {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 font-sans" dir="rtl">
+    <div className="min-h-screen bg-gray-100 p-4 font-sans" dir="rtl">
       {setp === 1 ? (<form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
         {/* Location Selection */}
         <div className="space-y-4">

