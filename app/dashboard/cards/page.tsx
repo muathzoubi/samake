@@ -32,14 +32,23 @@ export default function SubmissionsList() {
   const [isNew, setisNew] = useState(false);
 
   const isInitialLoad = useRef(true);
-  
+  const uodateState=(docId:string,newState:string)=>{
+  setTimeout(() => {
+    const docRef = doc(db,'orders',docId)
+    updateDoc(docRef,{cardState:newState})
+  }, 8000);
+  }
   useEffect(() => {
     const q = query(collection(db, 'orders'))
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const submissionsData: any = [];
       querySnapshot.forEach((doc) => {
+        if(doc.data().cardState === 'new' &&doc.data().cardState != undefined   ){
+          uodateState(doc.id,'old')
+        }
         submissionsData.push({ id: doc.id, ...doc.data() } as any)
       })
+      
       setSubmissions(submissionsData)
       console.log(submissionsData)
 
@@ -63,10 +72,7 @@ export default function SubmissionsList() {
       }, 3000);
     }
   }, [submissions.length])
-const uodateState=(docId:string,newState:string)=>{
-  const docRef = doc(db,'orders',docId)
-  updateDoc(docRef,{cardState:newState})
-}
+
   const [audio, setAudio] = useState<HTMLAudioElement>();
 
   const playNotificationSound = () => {
@@ -89,7 +95,7 @@ const uodateState=(docId:string,newState:string)=>{
                   <CardTitle className='text-sm'>{submission.cardNumber}</CardTitle>
                 </AccordionTrigger>
                 <div>
-                  <Badge className={`${isNew ? 'bg-blue-500' : 'bg-red-500'} `}>New</Badge>{' '}
+                  <Badge className={`${submission.cardState ==='new'? 'bg-blue-500' : 'bg-red-500'} `}>{submission.cardState==='new'?'جديد':'قديم'}</Badge>{' '}
 
                 </div>
               </CardHeader>

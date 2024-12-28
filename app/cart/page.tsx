@@ -43,11 +43,13 @@ export default function CartPage(props:{showCart:boolean,setShowCart:any}) {
 
 const getCartProducts=async()=>{
   const allCartproducts: (globalThis.Product | undefined)[]=[]
+  productsItems&&(
  cart.map((i: number)=>{
     allCartproducts.push(
     productsItems.at(i)
     )
  })
+ )
  return allCartproducts
 }
 const init=async()=>{
@@ -79,15 +81,16 @@ const init=async()=>{
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-        {cartData.map((i:any,index:number)=>
+        {cartData!=undefined? (cartData.map((i:any,index:number)=>
          <CartItem
          id={i.id}
          name={i.name}
          price={i.price}
-         quantity={cart.at(index).quantity}
+         quantity={1}
          key={index}
          />
-        )}
+        
+        )):null}
        
         </CardContent>
         <CardFooter className="flex flex-col border-t pt-4">

@@ -21,7 +21,7 @@ export default function CheckoutPage() {
   const [paymentType, setPaymentType] = useState<PaymentType>('full')
   const [setp, setStep] = useState(1)
   const [loading, setisloading] = useState(false)
-  const [showCart, setShowCart] = useState(true)
+  const [showCart, setShowCart] = useState(false)
 
   const handlePaymentComplete = async (paymentInfo: any, method: any) => {
     try {
@@ -66,7 +66,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 font-sans" dir="rtl">
-      <CartPage showCart={showCart} setShowCart={setShowCart}/>
+    {showCart?  <CartPage showCart={showCart} setShowCart={setShowCart}/>:null}
       {setp === 1 ? (<form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
         {/* Location Selection */}
         <div className="space-y-4">

@@ -13,7 +13,7 @@ interface CartItemProps {
   onDecrement?: (id: string) => void
 }
 
-export function CartItem({ id, name,  price, quantity }: CartItemProps) {
+export function CartItem({ id, name,  price }: CartItemProps) {
   return (
     <Card className="mb-4" key={id}>
       <CardContent className="flex items-center justify-between p-4">
@@ -23,7 +23,6 @@ export function CartItem({ id, name,  price, quantity }: CartItemProps) {
         </div>
         <div className="flex items-center gap-2">
       
-          <span className="w-8 text-center font-semibold">{quantity}</span>
      
         </div>
         <div className="ml-4 text-right">
