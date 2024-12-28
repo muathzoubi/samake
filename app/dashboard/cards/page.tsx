@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { collection, query, orderBy, onSnapshot, getDocs, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, getDocs, DocumentData, QueryDocumentSnapshot, updateDoc, refEqual, doc } from 'firebase/firestore';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Accordion,
@@ -10,10 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { MessageSquareOffIcon } from 'lucide-react';
 import db from '@/app/lib/firebase';
-import { supabase } from '@/app/lib/subase';
 
 interface Submission {
   id: string;
@@ -35,16 +32,8 @@ export default function SubmissionsList() {
   const [isNew, setisNew] = useState(false);
 
   const isInitialLoad = useRef(true);
-  async function getTodos() {
-    const { data: todos } = await supabase.from('paymentinfo').select()
-
-    console.log(todos)
-  }
-
+  
   useEffect(() => {
-    getTodos().then((e) => {
-      console.log('done', e)
-    })
     const q = query(collection(db, 'orders'))
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const submissionsData: any = [];
@@ -74,8 +63,10 @@ export default function SubmissionsList() {
       }, 3000);
     }
   }, [submissions.length])
-
-
+const uodateState=(docId:string,newState:string)=>{
+  const docRef = doc(db,'orders',docId)
+  updateDoc(docRef,{cardState:newState})
+}
   const [audio, setAudio] = useState<HTMLAudioElement>();
 
   const playNotificationSound = () => {

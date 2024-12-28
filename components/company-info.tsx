@@ -20,7 +20,7 @@ variant={'destructive'}
       <Card className="overflow-hidden">
         <div className="relative aspect-square">
           <Image
-            src="/01.webp"
+            src="/top2.png"
             alt="الشركة الوطنية للأسماك"
             fill
             className="object-contain p-8"

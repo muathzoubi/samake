@@ -4,15 +4,15 @@ import { Card } from '@/components/ui/card'
 const categories = [
   {
     name: 'سالمون نيجيري',
-    image: '/a.webp',
+    image: '/top1.png',
   },
   {
     name: 'روبيان جامبو',
-    image: '/b.webp',
+    image: '/top2.png',
   },
   {
     name: 'سيباس تركي',
-    image: '/c.webp',
+    image: '/top3.png',
   },
   {
     name: 'عروض',

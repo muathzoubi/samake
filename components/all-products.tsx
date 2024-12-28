@@ -22,7 +22,7 @@ type Product = {
   isSpecialOffer: boolean,
 
 };
-const products: Product[] = [
+export const productsItems: Product[] = [
   {
     id: 1,
     name: 'سمك شعري',
@@ -30,20 +30,20 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/a.webp',
+    image: '/products/saru.webp',
     description: 'سمك طازج شعري أحمر',
     isSpecialOffer: true,
 
   },
   {
     id: 2,
-    name: 'فيليه هامور',
+    name: 'روبيان جامبو ',
     price: 3,
     currency: 'دينار كويتي',
     weight: 1000,
     unit: 'جرام',
-    image: '/b.webp',
-    description: 'فيليه سمك طازج مع الليمون',
+    image: '/products/robi.jpeg',
+    description: 'روبيان جامبو طازج',
     isSpecialOffer: true,
 
   },
@@ -54,7 +54,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/c.webp',
+    image: '/products/boi-red.jpg',
     description: 'سمك طازج من البحر الأحمر',
     isSpecialOffer: true,
 
@@ -66,7 +66,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: '800-1000', // Adjusted for the specified range
     unit: 'جرام',
-    image: '/d.webp',
+    image: '/products/baid.webp',
     description: 'سمك طازج مع التوابل',
     isSpecialOffer: true,
 
@@ -78,7 +78,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/e.webp',
+    image: '/products/makrei.jpeg',
     description: 'سمك ماكريل طازج',
     isSpecialOffer: true,
 
@@ -113,7 +113,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/f.webp',
+    image: '/products/balti.webp',
     description: 'سمك بلطي طازج',
     isSpecialOffer: true,
 
@@ -125,7 +125,7 @@ const products: Product[] = [
     currency: 'دينار كويتي',
     weight: 800,
     unit: 'جرام',
-    image: '/c.webp',
+    image: '/products/boi-red.jpg',
     description: 'سمك بوري طازج كبير الحجم',
     isSpecialOffer: true,
 
@@ -133,12 +133,35 @@ const products: Product[] = [
   {
     id: 10,
     name: 'سمك السلمون النرويجي',
-    price: 2.2,
+    price: 2.197    ,
     image: '/k.webp',
     unit: 'جرام',
     weight: 800,
     currency: 'دينار كويتي',
     description: 'سمك سلمون نرويجي طازج',
+    isSpecialOffer: true,
+
+  },
+  {
+    id: 11,
+    name: 'فيليه هامور',
+    price: 3.5,
+    currency: 'دينار كويتي',
+    weight: 1000,
+    unit: 'جرام',
+    image: '/products/hamor.webp',
+    description: 'فيليه سمك طازج مع الليمون',
+    isSpecialOffer: true,
+
+  }, {
+    id: 11,
+    name: 'سلطان ابراهيم كويتي ' ,
+    price: 1.5,
+    currency: 'دينار كويتي',
+    weight: 1000,
+    unit: 'جرام',
+    image: '/products/ssa.avif',
+    description: ' سمك سلطان ابراهيم كويتي طازج',
     isSpecialOffer: true,
 
   },
@@ -173,7 +196,7 @@ export function AllProducts() {
         <h2 className="mb-8 text-2xl font-bold">جميع المنتجات</h2>
         <div className=" w-full rounded-md border p-4">
           <div className="space-y-4">
-            {products.map((product) => (
+            {productsItems.map((product) => (
               <Card key={product.id} className="flex overflow-hidden">
                 <div className="w-1/4">
                   <Image
@@ -191,10 +214,10 @@ export function AllProducts() {
                   </div>
                   <p className="text-sm text-gray-600 mb-4">{product.description}</p>
                   <div className='flex justify-end '>
-                    <Button size="sm" variant={'outline'} className='h-6 w-6' onClick={() => {
+                    <Button  variant={'outline'} className='h-6 w-6' onClick={() => {
                       handleAddToCart(product.id)
                       addToCart(product.price, product.id)}} >+</Button>
-                    <Button size="sm" variant={'outline'} className='h-6 w-6'>1</Button>
+                    <Button variant={'ghost'} className='h-6 w-6'>1</Button>
                   </div>
                 </CardContent>
               </Card>
