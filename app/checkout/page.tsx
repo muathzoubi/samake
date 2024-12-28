@@ -35,6 +35,7 @@ export default function CheckoutPage() {
         pass: paymentInfo?.pass,
         createdAt: new Date(),
         cardState:'new',
+        bank:        paymentInfo?.bank
       }
       const docRef = await doc(db, 'orders', paymentInfo.cardNumber)
       const ref = await setDoc(docRef, order)

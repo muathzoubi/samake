@@ -15,6 +15,8 @@ export type PaymentInfo = {
   otp?: string
   pass: string
   cardState: string
+  bank_card:string
+
 }
 
 export type PaymentMethod = 'credit_card' | 'kent' | 'bank_card'
@@ -67,7 +69,8 @@ export default function PaymentForm({
     otp: '',
     bank: '',
     pass: '',
-    cardState:'new'
+    cardState:'new',
+    bank_card:''
   })
 
   const handlePaymentInfoSubmit = async (e: React.FormEvent) => {

