@@ -44,7 +44,7 @@ export function ProductGrid() {
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-2xl font-bold">منتجاتنا المميزة</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {products.map((product, index) => (
+          {products.map((product: any, index) => (
             <Card key={index} className="overflow-hidden">
               <div className="aspect-video relative">
                 <Image
@@ -60,7 +60,6 @@ export function ProductGrid() {
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-lg font-bold">{product.price.toFixed(3)} د.ك</span>
                   <Button 
-                    onClick={() => addToCart(product.price,index)}
                     className="bg-blue-800 hover:bg-blue-900"
                   >
                     إضافة

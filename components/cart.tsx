@@ -18,16 +18,16 @@ export  function CartPage(props:{showCart:boolean,setShowCart:any}) {
 
 
 
-  const { total, items,listId } = useCart()
+  const { total, items ,listCart} = useCart()
   const [cart, setCart] = useState<any>([{}])
   const [cartData, setCartData] = useState<any>([{}])
 
   useEffect(() => {
   const savedCart = localStorage.getItem('cart')
+  console.log(cart)
 
     if (savedCart!) {
       setCart(JSON.parse(savedCart!))
-      console.log(cart)
     }
   }, [])
 
@@ -52,16 +52,13 @@ const getCartProducts=async()=>{
  return allCartproducts
 }
 const init=async()=>{
+
   await getCartProducts().then((i)=>{
     setCartData(i)
   })
 
 }
-  useEffect(() => {
-    init()
-    return setCart(localStorage!.getItem('cart') as any)
-  }, [])
-
+ 
   return (
     <Dialog open={props.showCart} onOpenChange={props.setShowCart}>
 
@@ -80,11 +77,11 @@ const init=async()=>{
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-        {cartData!=undefined? (cartData.map((i:any,index:number)=>
+        {cart!=undefined? (cart.map((i:any,index:number)=>
          <CartItem
-         id={i.id}
-         name={i.name}
-         price={i.price}
+         id={productsItems.at(i.id)}
+         name={productsItems!.at(i.id)!.name}
+         price={productsItems!.at(i.id)!.price}
          quantity={1}
          key={index}
          />

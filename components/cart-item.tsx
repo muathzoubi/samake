@@ -13,20 +13,19 @@ interface CartItemProps {
   onDecrement?: (id: string) => void
 }
 
-export function CartItem({ id, name,  price }: CartItemProps) {
+export function CartItem(props:any) {
+  console.log('cart',props)
   return (
-    <Card className="mb-4" key={id}>
+    <Card className="mb-4" key={props.id}>
       <CardContent className="flex items-center justify-between p-4">
         <div className="flex-1">
-          <h3 className="font-semibold">{name}</h3>
-          <p className="text-sm text-gray-600">KD {price} د.ك</p>
+          <h3 className="font-semibold">{props.name}</h3>
+          <p className="text-sm text-gray-600">KD {props.price} د.ك</p>
         </div>
         <div className="flex items-center gap-2">
-      
-     
         </div>
         <div className="ml-4 text-right">
-          <p className="font-semibold">KD {(price  )} د.ك</p>
+          <p className="font-semibold">KD {(props.price  )} د.ك</p>
         </div>
       </CardContent>
     </Card>
