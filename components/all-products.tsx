@@ -116,7 +116,6 @@ export const productsItems: Product[] = [
     image: '/products/balti.webp',
     description: 'سمك بلطي طازج',
     isSpecialOffer: true,
-
   },
   {
     id: 9,

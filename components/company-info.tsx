@@ -8,7 +8,7 @@ export function CompanyInfo() {
   return (
     <div className="space-y-6">
       <div  className='mx-4'>
-  <Link href={'products'}>
+  <Link href={'/products'}>
           <Button
 variant={'destructive'}
             className="w-full  border-blue-600'"
@@ -18,6 +18,8 @@ variant={'destructive'}
           </Link>
 </div>
       <Card className="overflow-hidden">
+  <Link href={'/products'}>
+
         <div className="relative aspect-square">
           <Image
             src="/top2.png"
@@ -30,6 +32,8 @@ variant={'destructive'}
             ادعم المحلي
           </div>
         </div>
+  </Link >
+
       </Card>
 
       <div className="rounded-lg bg-white p-4 shadow">
