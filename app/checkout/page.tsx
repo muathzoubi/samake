@@ -11,7 +11,7 @@ import PaymentForm from '../payment-form'
 import { doc, setDoc } from 'firebase/firestore'
 import db from '../lib/firebase'
 import { Input } from '@/components/ui/input'
-import CartPage from '../cart/page'
+import { CartPage } from '@/components/cart'
 
 type LocationType = 'home' | 'work' | 'client'
 type PaymentType = 'full' | 'partial'

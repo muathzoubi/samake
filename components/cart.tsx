@@ -1,12 +1,11 @@
 'use client'
 
-import { productsItems } from '@/components/all-products'
-import { CartItem } from '@/components/cart-item'
-import { useCart } from '@/components/cart-provider'
-import { Button } from '@/components/ui/button'
-import { Card, CardTitle, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
-import { Dialog, DialogClose, DialogContent } from '@/components/ui/dialog'
 import { useEffect, useState } from 'react'
+import { useCart } from './cart-provider'
+import { Dialog, DialogContent } from './ui/dialog'
+import { Card, CardHeader,CardTitle,CardContent, CardFooter} from './ui/card'
+import { CartItem } from './cart-item'
+import { productsItems } from './all-products'
 interface Product {
   id: string
   name: string
