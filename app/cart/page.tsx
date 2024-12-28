@@ -15,7 +15,7 @@ interface Product {
 }
 
 
-export default function CartPage(props:{showCart:boolean,setShowCart:any}) {
+export  function CartPage(props:{showCart:boolean,setShowCart:any}) {
 
 
 
