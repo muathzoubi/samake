@@ -167,7 +167,7 @@ export const productsItems: Product[] = [
 ];
 export function AllProducts() {
   const [cart, setCart] = useState<{ id: number, quantity: number }[]>([])
-  const { addToCart, total, items } = useCart()
+  const { addToCart, total, items ,handleMinus} = useCart()
   const router = useRouter()
   const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -215,8 +215,10 @@ export function AllProducts() {
                   <div className='flex justify-end '>
                     <Button  variant={'outline'} className='h-6 w-6' onClick={() => {
                       handleAddToCart(product.id)
-                      addToCart(product.price, product.id)}} >+</Button>
-                    <Button variant={'ghost'} className='h-6 w-6'>1</Button>
+                      addToCart(product.price, product.id)}} >{'+'}</Button>
+                    <Button variant={'ghost'} className='h-6 w-6'>{items}</Button>
+                    <Button onClick={handleMinus}
+                    variant={'ghost'} className='h-6 w-6'>{'-'}</Button>
                   </div>
                 </CardContent>
               </Card>

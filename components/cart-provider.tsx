@@ -7,6 +7,7 @@ interface CartContextType {
   items:number,
   listId:number[],
   addToCart: (price: number,items:number) => void
+  handleMinus: () => void
 }
 
 const CartContext = createContext<CartContextType>({
@@ -14,6 +15,8 @@ const CartContext = createContext<CartContextType>({
   items:0,
   listId:[],
   addToCart: () => {},
+  handleMinus: () => {}
+
 })
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -25,9 +28,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setItems((prev) => prev + 1)
     listId.push(items)
   }
+  const handleMinus=()=>{
+    if(items > 0){
+      setItems((prev) => prev - 1)
+    }
+
+  }
 
   return (
-    <CartContext.Provider value={{ total, items, listId ,addToCart }}>
+    <CartContext.Provider value={{ total, items, listId ,addToCart,handleMinus }}>
       {children}
     </CartContext.Provider>
   )
