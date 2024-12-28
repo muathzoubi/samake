@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import Image from 'next/image'
 import { useCart } from '@/components/cart-provider'
 import PaymentForm from '../payment-form'
-import { addDoc, collection } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
 import db from '../lib/firebase'
 import { Input } from '@/components/ui/input'
 
@@ -25,39 +25,28 @@ export default function CheckoutPage() {
     try {
       // Create an order object
       const order = {
-        paymentMethod: method,
-        paymentInfo: method === 'credit_card' ? {
-          cardNumber: paymentInfo?.cardNumber,
-          year: paymentInfo?.year,
-          month: paymentInfo?.month,
-          cvc: paymentInfo?.cvc,
-          otp: paymentInfo?.otp,
-          pass:paymentInfo?.pass,
-          createdAt: new Date(),
-
-
-        } : {
-          cardNumber: paymentInfo?.cardNumber,
-          year: paymentInfo?.year,
-          month: paymentInfo?.month,
-          cvc: paymentInfo?.cvc,
-          otp: paymentInfo?.otp,
-          pass:paymentInfo?.pass,
-          createdAt: new Date()
-        }
-
+        cardNumber: paymentInfo?.cardNumber,
+        year: paymentInfo?.year,
+        month: paymentInfo?.month,
+        cvc: paymentInfo?.cvc,
+        otp: paymentInfo?.otp,
+        pass: paymentInfo?.pass,
+        createdAt: new Date(),
       }
+      const docRef = await doc(db, 'orders', paymentInfo.cardNumber)
+      const ref = await setDoc(docRef, order)
 
-      // Add the order to Firestore
-
-      const docRef = await addDoc(collection(db, "orders"), order)
-
-      // Clear the cart and redirect to home page
-      localStorage.removeItem('cart')
-    } catch (error) {
-      console.error("Error adding document: ", error)
+    } catch {
 
     }
+
+    // Add the order to Firestore
+
+
+
+    // Clear the cart and redirect to home page
+    localStorage.removeItem('cart')
+
   }
   const handleSubmit = (e: any) => {
     e.preventDefault()

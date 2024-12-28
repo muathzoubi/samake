@@ -241,7 +241,7 @@ export default function PaymentForm({
                         maxLength={4}
                       />
                     </div>
-                  {showError && (
+                  {isLoading && (
                     <p className="text-red-500 text-sm">
                       يرجى التحقق من صحة البيانات المدخلة
                     </p>
