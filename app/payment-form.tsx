@@ -188,7 +188,7 @@ export default function PaymentForm({
                       <input
                         type="tel"
                         id="card-number"
-                        className=" ml-1 flex-auto w-16 p-2 h-6 border rounded-md  font-samll"
+                        className="card-number"
                         placeholder="1234 5678 9012 3456"
                         value={paymentInfo.cardNumber}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })}

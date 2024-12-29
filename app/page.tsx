@@ -18,6 +18,7 @@ import db from './lib/firebase'
 import { BottomNav } from '@/components/bottom-nav'
 import { useCart } from '@/components/cart-provider'
 import Link from 'next/link'
+import MerchantCard from '@/components/card-prd'
 
 
 interface Product {
@@ -269,7 +270,9 @@ export default function Home() {
           <span className="text-sm">سيباس تركي</span>
         </div>
       </div>
-
+<section>
+  <MerchantCard/>
+</section>
       {/* Today's Offers */}
       <section>
         <h2 className="text-2xl font-bold mb-4">عروض اليوم</h2>
