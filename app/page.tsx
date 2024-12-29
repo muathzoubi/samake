@@ -168,14 +168,52 @@ export default function Home() {
     <div className="h-full bg-gray-50 pb-8 ">
       <div className="container mx-auto p-4 space-y-6 " dir="rtl">
       {/* Header */}
-      <header className="flex flex-col sm:flex-row items-center justify-between py-4 gap-4">
-      <Image
+      <header className="flex flex-col sm:flex-row items-center justify-around  py-4 gap-4">
+    
+          <div className="flex justify-around ">
+          <img
             src="/nfc2.png"
             alt="Logo"
-            width={150}
-            height={60}
-            className="h-12 w-auto"
-          />
+            height={30}
+            className="h-8 w-32"
+          /> 
+          <div className="flex items-center bg-blue-900 text-white px-1 mr-8 text-sm  bg-red rounded-full shadow-lg " >
+          <Sheet>
+              <SheetTrigger asChild>
+                <Button size="icon" variant="default" className="relative mx-2 bg-blue-900  ">
+                  <ShoppingCart className="h-4 w-4" />
+                  {cart.length > 0 && (
+                    <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
+                      {cart.length}
+                    </Badge>
+                  )}
+                </Button>
+              </SheetTrigger>
+              <SheetContent >
+                <SheetHeader>
+                  <SheetTitle>سلة التسوق</SheetTitle>
+                  <SheetDescription>
+                    {cart.length === 0 ? "سلة التسوق فارغة" : `${cart.length} منتجات في السلة`}
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="mt-4 space-y-4">
+                  {cart.map((item, index) => (
+                    <div key={index} className="flex justify-between items-center">
+                      <span>{item.name}</span>
+                      <div className="flex items-center gap-2">
+                        <span>{item.price.toFixed(3)} د.ك</span>
+                        <Button size="sm" variant="destructive" onClick={() => removeFromCart(item.id)}>
+                          حذف
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
+            <div className="font-bold ml-auto">{total.toFixed(3)} د.ك</div>
+          </div>
+          </div>
         <div className="flex items-center gap-4 sm:gap-8">
        
           <div className="flex items-center gap-4">
@@ -226,7 +264,7 @@ export default function Home() {
               </div>
             </SheetContent>
           </Sheet>
-        </div>
+          </div>
       </header>
 
       {/* Categories */}
