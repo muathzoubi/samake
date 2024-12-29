@@ -307,6 +307,14 @@ export default function Home() {
                 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
               </div>
             </div>
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-sm">المسافة</span>
+              <span className="font-bold">15 كيلو</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-sm">ساعات العمل</span>
+              <span className="font-bold text-green-500">مفتوح</span>
+            </div>
           </div>
           </CardContent>
   </Card>
