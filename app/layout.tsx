@@ -3,6 +3,7 @@ import { CartProvider } from '@/components/cart-provider'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  title: "أسماك الوطنية",
   description:'اكتشف منتجاتنا عالية الجودة من الأسماك الطازجة والمستوردة والروبيان المميز. اطلب الآن مع أفضل وأسرع خدمة توصيل اونلاين.  ',
   openGraph: {
     images: [

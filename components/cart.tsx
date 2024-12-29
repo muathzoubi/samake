@@ -1,105 +1,95 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useCart } from './cart-provider'
-import { Dialog, DialogContent } from './ui/dialog'
-import { Card, CardHeader,CardTitle,CardContent, CardFooter} from './ui/card'
-import { CartItem } from './cart-item'
-import { productsItems } from './all-products'
-interface Product {
-  id: string
-  name: string
-  nameAr: string
-  price: number
-}
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
+import Link from 'next/link'
+import { ArrowRight, Minus, Plus, Trash2 } from 'lucide-react'
+import { useCart } from "./cart-provider"
 
+export default function CartPage() {
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart()
 
-export  function CartPage(props:{showCart:boolean,setShowCart:any}) {
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
-
-
-  const { total, items ,listCart} = useCart()
-  const [cart, setCart] = useState<any>([{}])
-  const [cartData, setCartData] = useState<any>([{}])
-
-  useEffect(() => {
-  const savedCart = localStorage.getItem('cart')
-  console.log(cart)
-
-    if (savedCart!) {
-      setCart(JSON.parse(savedCart!))
-    }
-  }, [])
-
-  const calculateTotal = () => {
-    return cart.reduce((total: number, item: { id: string; quantity: number }) => {
-      const product = products.find(p => p.id.toString() === item.id)
-      return total + (product?.price || 0) * item.quantity
-    }, 0)
+  if (cart.length === 0) {
+    return (
+      <div className="container mx-auto p-4 text-center">
+        <h1 className="text-2xl font-bold mb-4">سلة التسوق</h1>
+        <p className="mb-4">سلة التسوق فارغة</p>
+        <Link href="/">
+          <Button>
+            <ArrowRight className="ml-2 h-4 w-4" /> العودة للتسوق
+          </Button>
+        </Link>
+      </div>
+    )
   }
 
-
-
-const getCartProducts=async()=>{
-  const allCartproducts: (globalThis.Product | undefined)[]=[]
-  productsItems&&(
- cart.map((i: number)=>{
-    allCartproducts.push(
-    productsItems.at(i)
-    )
- })
- )
- return allCartproducts
-}
-const init=async()=>{
-
-  await getCartProducts().then((i)=>{
-    setCartData(i)
-  })
-
-}
- 
   return (
-    <Dialog open={props.showCart} onOpenChange={props.setShowCart}>
-
-<DialogContent>
-      <Card className="w-full max-w-2xl mx-auto">
-        <CardHeader>
-          <CardTitle className="flex justify-between items-center">
-            <span className="text-sm font-normal">
-              {items} العناصر
-            </span>
-          </CardTitle>
-          <CardTitle className="flex justify-between items-center text-right">
-            <span className="text-sm font-normal">
-              عربة التسوق
-            </span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-        {cart!=undefined? (cart.map((i:any,index:number)=>
-         <CartItem
-         id={productsItems.at(i.id)}
-         name={productsItems!.at(i.id)!.name}
-         price={productsItems!.at(i.id)!.price}
-         quantity={1}
-         key={index}
-         />
-        
-        )):null}
-       
-        </CardContent>
-        <CardFooter className="flex flex-col border-t pt-4">
-          <div className="flex justify-between w-full mb-4">
-            <div className="text-right">
-              <p className="text-sm text-gray-600">المبلغ الإجمالي</p>
-              <p className="text-2xl font-bold">د.ك {total}</p>
-            </div>
-          </div>
-         
-        </CardFooter>
-      </Card>
-    </DialogContent>
-    </Dialog>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">سلة التسوق</h1>
+      <div className="grid gap-4">
+        {cart.map((item) => (
+          <Card key={item.id}>
+            <CardContent className="p-4 flex items-center">
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={80}
+                height={80}
+                className="rounded-md object-cover"
+              />
+              <div className="ml-4 flex-grow">
+                <h3 className="font-semibold">{item.name}</h3>
+                <p className="text-sm text-gray-500">{item.price.toFixed(3)} د.ك</p>
+              </div>
+              <div className="flex items-center">
+                <Button
+                  size="icon"
+                  variant="outline"
+                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="mx-2">{item.quantity}</span>
+                <Button
+                  size="icon"
+                  variant="outline"
+                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+              <Button
+                size="icon"
+                variant="destructive"
+                className="ml-4"
+                onClick={() => removeFromCart(item.id)}
+              >
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      <div className="mt-6 flex justify-between items-center">
+        <div>
+          <p className="text-lg font-semibold">المجموع: {total.toFixed(3)} د.ك</p>
+        </div>
+        <div className="space-x-2 space-x-reverse">
+          <Button variant="outline" onClick={clearCart}>إفراغ السلة</Button>
+          <Button>الدفع</Button>
+        </div>
+      </div>
+      <div className="mt-4">
+        <Link href="/">
+          <Button variant="link">
+            <ArrowRight className="ml-2 h-4 w-4" /> متابعة التسوق
+          </Button>
+        </Link>
+      </div>
+    </div>
   )
 }
+

@@ -168,7 +168,7 @@ export const productsItems: Product[] = [
 ];
 export function AllProducts() {
   const [cart, setCart] = useState<{ id: number, quantity: number }[]>([])
-  const { addToCart, total, items } = useCart()
+  const { addToCart } = useCart()
   const router = useRouter()
   const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -194,39 +194,6 @@ export function AllProducts() {
   }
   return (
     <section className="h-full">
-      <div className=" mx-auto px-2">
-        <h2 className="mb-8 text-2xl font-bold">جميع المنتجات</h2>
-        <div className=" w-full rounded-md border p-4">
-          <div className="space-y-4">
-            {productsItems.map((product) => (
-              <Card key={product.id} className="flex overflow-hidden">
-                <div className="w-1/4">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={200}
-                    height={100}
-                    className="w-full object-cover rounded-lg my-4 "
-                  />
-                </div>
-                <CardContent className="flex-1 p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-sm">{product.name}</h3>
-                    <span className="text-sm font-bold">د.ك{product.price.toFixed(2)}</span>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-4">{product.description}</p>
-                  <div className='flex justify-end '>
-                    <Button  variant={'outline'} className='h-12 w-12' onClick={() => {
-                      handleAddToCart(product.id)
-                      addToCart(product.price, product.id,product)}} >+</Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-        <BottomNav handleCheckout={handleCheckout} />
-      </div>
     </section>
   )
 }

