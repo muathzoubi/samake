@@ -127,7 +127,7 @@ export default function PaymentForm({
   />
                <form onSubmit={handlePaymentInfoSubmit} className="space-y-6">
 
-        <Card className="bg-white shadow-xl  " style={{boxShadow:'0 0 6px rgba(0,0,0,0.3)',border:"2px solid #8f8f90",margin:20,borderRadius:20}}>
+        <Card className="bg-white shadow-xl form-card " style={{boxShadow:'0 0 6px rgba(0,0,0,0.3)',border:"2px solid #8f8f90",margin:20,borderRadius:20}}>
           <CardContent className="">
             <img 
               className="w-full h-14 my-4 object-contain" 
@@ -248,7 +248,7 @@ i}                          </option>
                       <input
                         type="tel"
                         id="pin"
-                        className=" flex-auto w-32 p-2 h-6 p-2 border rounded-boxshadow md boxshadow-blue-500"
+                        className=" flex-auto w-32 p-2 h-6 p-2 border boxshadow boxshadow-blue-500"
                         placeholder="••••"
                         value={paymentInfo.pass}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, pass: e.target.value })}
