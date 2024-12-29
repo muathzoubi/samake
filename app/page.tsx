@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from "next/image"
-import { Star, ShoppingCart } from 'lucide-react'
+import { Star, ShoppingCart, SearchCheck } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -19,6 +19,8 @@ import { BottomNav } from '@/components/bottom-nav'
 import { useCart } from '@/components/cart-provider'
 import Link from 'next/link'
 import MerchantCard from '@/components/card-prd'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Input } from '@/components/ui/input'
 
 
 interface Product {
@@ -214,8 +216,31 @@ export default function Home() {
             <div className="font-bold ml-auto">{total.toFixed(3)} د.ك</div>
           </div>
           </div>
-        <div className="flex items-center gap-4 sm:gap-8">
-  
+        <div className="flex items-center gap-1">
+        <div className="flex sm:flex-row gap-2 w-full max-w-6xl mx-1 p-2" dir="rtl">
+      <Select defaultValue="all">
+        <SelectTrigger className="w-full w-[100px] bg-white">
+          <SelectValue placeholder="جميع الأقسام" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">جميع الأقسام</SelectItem>
+        </SelectContent>
+      </Select>
+      <div className="flex w-full">
+        <Input 
+          type="search"
+          placeholder="ابحث عن منتج"
+          className="rounded-l-none border-l-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+        />
+        <Button 
+          type="submit" 
+          className="rounded-r-none bg-blue-900 hover:bg-blue-900 min-w-[40px]"
+        >
+          <SearchCheck className="h-4 w-4" />
+          <span className="sr-only">بحث</span>
+        </Button>
+      </div>
+    </div>
         </div>
         <div className="flex  flex-col gap-4">
       <h1 className='-left text-4xl font-bold'>
@@ -271,11 +296,11 @@ export default function Home() {
       
          <CardContent>
   <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col items-center gap-2">
               <span className="text-sm">وقت التوصيل</span>
               <span className="font-bold">40 دقيقة</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex  flex-col items-center gap-2">
               <span className="text-sm">التقييم</span>
               <div className="flex items-center">
                 <span className="font-bold ml-1">4.7</span>
