@@ -84,7 +84,6 @@ export default function CheckoutPage() {
                 <Input
                   id="area"
                   name="area"
-                  placeholder="مثال: محمد احمد"
                   required
                 />
               </div>
@@ -93,7 +92,6 @@ export default function CheckoutPage() {
                 <Input
                   id="block"
                   name="block"
-                  placeholder="مثال: شارع الحرية"
                   required
                 />
               </div>
@@ -104,7 +102,6 @@ export default function CheckoutPage() {
                 <Label htmlFor="street">البناية / الشقة</Label>
                 <Input
                   id="street"
-                  name="street"
                   placeholder="مثال: بناية رقم 9"
                   required
                 />
@@ -115,7 +112,6 @@ export default function CheckoutPage() {
                 <Input
                   id="house"
                   name="house"
-                  placeholder=" ### ### ###"
                   required
                 /> <Input
                 id="house"
@@ -123,7 +119,6 @@ export default function CheckoutPage() {
                 className='w-32 mx-1'
                 readOnly
                 value={'965+'}
-                placeholder=" ### ### ###"
                 required
               /></div>
               </div>
@@ -135,7 +130,6 @@ export default function CheckoutPage() {
               <Input
                 id="notes"
                 name="notes"
-                placeholder="مثال: بجانب المسجد"
                 className="h-20"
               />
             </div>
