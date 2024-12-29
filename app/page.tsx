@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Image from "next/image"
 import { Star, ShoppingCart } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
   Sheet,
@@ -177,7 +177,7 @@ export default function Home() {
             height={30}
             className="h-8 w-32"
           /> 
-          <div className="flex items-center bg-blue-900 text-white px-1 mr-8 text-sm  bg-red rounded-full shadow-lg " >
+          <div className="flex items-center justify-between  bg-blue-900 text-white px-1 mr-8 text-sm  bg-red rounded-full shadow-lg " >
           <Sheet>
               <SheetTrigger asChild>
                 <Button size="icon" variant="default" className="relative mx-2 bg-blue-900  ">
@@ -215,55 +215,18 @@ export default function Home() {
           </div>
           </div>
         <div className="flex items-center gap-4 sm:gap-8">
-       
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-sm">وقت التوصيل</span>
-              <span className="font-bold">40 دقيقة</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm">التقييم</span>
-              <div className="flex items-center">
-                <span className="font-bold ml-1">4.7</span>
-                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-              </div>
-            </div>
-          </div>
+  
         </div>
-        <div className="flex items-center gap-4">
-        محتويات السلة          <Sheet>
-            <SheetTrigger asChild>
-              <Button size="icon" variant="outline" className="relative">
-                <ShoppingCart className="h-4 w-4" />
-                {cart.length > 0 && (
-                  <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
-                    {cart.length}
-                  </Badge>
-                )}
-              </Button>
-            </SheetTrigger>
-            <SheetContent >
-              <SheetHeader>
-                <SheetTitle>سلة التسوق</SheetTitle>
-                <SheetDescription>
-                  {cart.length === 0 ? "سلة التسوق فارغة" : `${cart.length} منتجات في السلة`}
-                </SheetDescription>
-              </SheetHeader>
-              <div className="mt-4 space-y-4">
-                {cart.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center">
-                    <span>{item.name}</span>
-                    <div className="flex items-center gap-2">
-                      <span>{item.price.toFixed(3)} د.ك</span>
-                      <Button size="sm" variant="destructive" onClick={() => removeFromCart(item.id)}>
-                        حذف
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
+        <div className="flex  flex-col gap-4">
+      <h1 className='-left text-4xl font-bold'>
+      أسماك الوطنية
+
+      </h1>
+      <p>
+      اكتشف منتجاتنا عالية الجودة من الأسماك الطازجة والمستوردة والروبيان المميز، اطلب الآن مع أفضل وأسرع خدمة توصيل اونلاين.
+
+
+      </p>
           </div>
       </header>
 
@@ -298,6 +261,30 @@ export default function Home() {
       </div>
 <section>
   <MerchantCard/>
+  
+  
+
+</section>
+<section>
+
+<Card>
+      
+         <CardContent>
+  <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <span className="text-sm">وقت التوصيل</span>
+              <span className="font-bold">40 دقيقة</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm">التقييم</span>
+              <div className="flex items-center">
+                <span className="font-bold ml-1">4.7</span>
+                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              </div>
+            </div>
+          </div>
+          </CardContent>
+  </Card>
 </section>
       {/* Today's Offers */}
       <section>
@@ -354,8 +341,10 @@ export default function Home() {
               </CardContent>
             </Card>
           ))}
+          
         </div>
       </section>
+      
     </div>
     <div className="fixed bottom-0 left-0 right-0 m-4">
       <div className="flex items-center justify-between bg-blue-900 p-3 text-white rounded-full shadow-lg">
