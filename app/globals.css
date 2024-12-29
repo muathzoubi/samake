@@ -206,9 +206,9 @@
   max-width: 90px;
 }
 
-.card-number select {
+.small{
+  font-size: small;
 }
-
 .card-number input {
   width: 70%;
 }

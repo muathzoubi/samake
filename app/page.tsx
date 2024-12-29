@@ -167,23 +167,23 @@ export default function Home() {
     },[])  
 
   return (
-    <div className="h-full bg-gray-50 pb-8 ">
+    <div className="h-full pb-8 ">
       <div className="container mx-auto p-4 space-y-6 " dir="rtl">
       {/* Header */}
       <header className="flex flex-col sm:flex-row items-center justify-around  py-4 gap-4">
     
-          <div className="flex justify-around ">
+          <div className="flex justify-between ">
           <img
             src="/nfc2.png"
             alt="Logo"
             height={30}
-            className="h-8 w-32"
+            className="h-6 w-full"
           /> 
-          <div className="flex items-center justify-between  bg-blue-900 text-white px-1 mr-8 text-sm  bg-red rounded-full shadow-lg " >
+          <div className="flex items-center justify-between  bg-blue-900 text-white mr-8 text-sm  bg-red rounded-full shadow-lg " >
           <Sheet>
               <SheetTrigger asChild>
-                <Button size="icon" variant="default" className="relative mx-2 bg-blue-900  ">
-                  <ShoppingCart className="h-4 w-4" />
+                <Button size="icon" variant="default" className="relative mx-4 bg-blue-900  ">
+                  <ShoppingCart className="h-2 w-2" />
                   {cart.length > 0 && (
                     <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
                       {cart.length}
@@ -203,7 +203,7 @@ export default function Home() {
                     <div key={index} className="flex justify-between items-center">
                       <span>{item.name}</span>
                       <div className="flex items-center gap-2">
-                        <span>{item.price.toFixed(3)} د.ك</span>
+                        <span>{item.price.toFixed(2)} د.ك</span>
                         <Button size="sm" variant="destructive" onClick={() => removeFromCart(item.id)}>
                           حذف
                         </Button>
@@ -213,28 +213,28 @@ export default function Home() {
                 </div>
               </SheetContent>
             </Sheet>
-            <div className="font-bold ml-auto">{total.toFixed(3)} د.ك</div>
+            <div className="small ml-auto">{total.toFixed(3)} د.ك</div>
           </div>
           </div>
         <div className="flex items-center gap-1">
-        <div className="flex sm:flex-row gap-2 w-full max-w-6xl mx-1 p-2" dir="rtl">
+        <div className="flex sm:flex-row gap-2 w-full max-w-6xl mx-1 p-2  rounded-full" dir="rtl">
       <Select defaultValue="all">
-        <SelectTrigger className="w-full w-[100px] bg-white">
+        <SelectTrigger className="w-full w-[100px] bg-white  rounded-full">
           <SelectValue placeholder="جميع الأقسام" />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">جميع الأقسام</SelectItem>
         </SelectContent>
       </Select>
-      <div className="flex w-full">
+      <div className="flex w-full  rounded-full">
         <Input 
           type="search"
           placeholder="ابحث عن منتج"
-          className="rounded-l-none border-l-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+          className=" rounded-r-full border-l-0 focus-visible:ring-0 focus-visible:ring-offset-0"
         />
         <Button 
           type="submit" 
-          className="rounded-r-none bg-blue-900 hover:bg-blue-900 min-w-[40px]"
+          className="rounded-r-none  rounded-l-full bg-blue-900 hover:bg-blue-900 min-w-[60px]"
         >
           <SearchCheck className="h-4 w-4" />
           <span className="sr-only">بحث</span>
@@ -312,11 +312,11 @@ export default function Home() {
   </Card>
 </section>
       {/* Today's Offers */}
-      <section>
+      <Card className='bg-gray-100 overflow-x-auto'>
         <h2 className="text-2xl font-bold mb-4">عروض اليوم</h2>
-        <div className="flex overflow-x-auto gap-4 pb-4 -mx-4 px-4">
+        <div className="flex  gap-4 pb-4 -mx-4 px-4">
           {offers.map((offer) => (
-            <Card key={offer.id} className="min-w-[250px] sm:min-w-[280px]">
+            <Card key={offer.id} className="min-w-[150px] sm:min-w-[180px] rounded-lg">
               <CardContent className="p-4 ">
                 <div className="aspect-square relative mb-4">
                   <Image
@@ -337,14 +337,14 @@ export default function Home() {
             </Card>
           ))}
         </div>
-      </section>
+      </Card>
 
       {/* Products Grid */}
       <section>
         <h2 className="text-2xl font-bold mb-4">قائمة أسماك الوطنية</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {productsItems.map((product) => (
-            <Card key={product.id}>
+            <Card key={product.id} className='rounded-lg'>
               <CardContent className="p-4 grid grid-cols-2 ">
                 <div className=" relative mb-4">
                   <img
