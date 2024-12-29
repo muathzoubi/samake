@@ -33,11 +33,36 @@ interface Product {
 
 }
 const offers: Product[] = [
-  { id: 1, name: "روبيان طازج", price: 8.000, image: "/top1.png" },
-  { id: 2, name: "سمك السلمون", price: 12.000, image: "/top2.png" },
-  { id: 3, name: "كاليماري", price: 6.000, image: "/top3.png" },
+  { id: 1, name: "عرض كل الكويت  ", price: 8.000, image: "/top1.png" },
+  { id: 2, name: " عرض الوطنية ", price: 12.000, image: "/top2.png" },
+  { id: 3, name: "عرض اليوم", price: 6.000, image: "/top3.png" },
 ]
  const productsItems: Product[] = [
+ {
+    id: 101,
+    name: 'عرض كل الكويت ',
+    price: 2,
+    image: '/products/saru.webp',
+    description: 'سمك طازج شعري أحمر',
+    quantity:0
+
+  }, {
+    id: 102,
+    name: 'عرض الوطنية ',
+    price: 2,
+    image: '/products/saru.webp',
+    description: 'سمك طازج شعري أحمر',
+    quantity:0
+
+  }, {
+    id: 103,
+    name: ' عرض اليوم',
+    price: 2,
+    image: '/products/saru.webp',
+    description: 'سمك طازج شعري أحمر',
+    quantity:0
+
+  },
   {
     id: 1,
     name: 'سمك شعري',
@@ -141,11 +166,10 @@ const offers: Product[] = [
    
     image: '/products/hamor.webp',
     description: 'فيليه سمك طازج مع الليمون',
-
     quantity:0
 
   }, {
-    id: 11,
+    id: 12,
     name: 'سلطان ابراهيم كويتي ' ,
     price: 1.5,
     image: '/products/ssa.avif',
@@ -156,15 +180,6 @@ const offers: Product[] = [
 export default function Home() {
   const { cart, addToCart ,removeFromCart} = useCart()
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
-
-  const [sdata,setSdata]=useState()
-  const addvistor=async (ip:any,data:any)=>{
-    const docRef = await doc(db, 'vistors', ip)
-    const ref = await setDoc(docRef, data)
-  }
-
-    useEffect (()=>{
-    },[])  
 
   return (
     <div className="h-full pb-8 ">
@@ -249,8 +264,6 @@ export default function Home() {
       </h1>
       <p>
       اكتشف منتجاتنا عالية الجودة من الأسماك الطازجة والمستوردة والروبيان المميز، اطلب الآن مع أفضل وأسرع خدمة توصيل اونلاين.
-
-
       </p>
           </div>
       </header>
@@ -286,9 +299,6 @@ export default function Home() {
       </div>
 <section>
   <MerchantCard/>
-  
-  
-
 </section>
 <section>
 
@@ -335,10 +345,10 @@ export default function Home() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-semibold">{offer.name}</h3>
+                  <p className="text-sm text-gray-600">{offer.name}</p>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold">{offer.price.toFixed(3)} د.ك</span>
-                    <Button variant={'outline'} size="sm" onClick={() => addToCart(offer)}>إضافة</Button>
+                    <span className="">{offer.price.toFixed(3)} د.ك</span>
+                    <Button className="bg-gray-200 rounded-full " variant={'ghost'} size="sm" onClick={() => addToCart(offer)}>إضافة</Button>
                   </div>
                 </div>
               </CardContent>
@@ -352,7 +362,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold mb-4">قائمة أسماك الوطنية</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {productsItems.map((product) => (
-            <Card key={product.id} className='rounded-lg'>
+            <Card key={product.id} className='rounded-lg border-none'>
               <CardContent className="p-4 grid grid-cols-2 ">
                 <div className=" relative mb-4">
                   <img
@@ -368,7 +378,7 @@ export default function Home() {
                   <p className="text-sm text-gray-500">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="font-bold">{product.price.toFixed(3)} د.ك</span>
-                    <Button variant={'outline'} size="sm" onClick={() => addToCart(product)}>إضافة</Button>
+                    <Button className="bg-gray-200 rounded-full" variant={'ghost'} size="sm" onClick={() => addToCart(product)}>إضافة</Button>
                   </div>
                 </div>
               </CardContent>
