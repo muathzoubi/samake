@@ -33,42 +33,33 @@ interface Product {
 
 }
 const offers: Product[] = [
-  { id: 1, name: "عرض كل الكويت  ", price: 8.000, image: "/top1.png" },
-  { id: 2, name: " عرض الوطنية ", price: 12.000, image: "/top2.png" },
-  { id: 3, name: "عرض اليوم", price: 6.000, image: "/top3.png" },
+  { id: 1, name: "10 كيلو روبيان كويتي جامبو طازج ", price: 8.000, image: "/10rob.jpg" },
+  { id: 2, name: "كرتون 10 كيلو سيباس تركي حجم 800-1000", price: 12.000, image: "/sebas.jpg" },
+  { id: 3, name: "كرتون 10 كيلو روبيان جامبو مقشر  ", price: 6.000, image: "/iran.jpg" },
 ]
  const productsItems: Product[] = [
  {
     id: 101,
     name: 'عرض كل الكويت ',
     price: 2,
-    image: '/products/saru.webp',
-    description: 'سمك طازج شعري أحمر',
+    image: "/10rob.jpg",
+    description:  "10 كيلو روبيان كويتي جامبو طازج ",
     quantity:0
 
   }, {
     id: 102,
     name: 'عرض الوطنية ',
     price: 2,
-    image: '/products/saru.webp',
-    description: 'سمك طازج شعري أحمر',
+    image: "/sebas.jpg" ,
+    description: "كرتون 10 كيلو روبيان جامبو مقشر  ",
     quantity:0
 
   }, {
     id: 103,
     name: ' عرض اليوم',
     price: 2,
-    image: '/products/saru.webp',
-    description: 'سمك طازج شعري أحمر',
-    quantity:0
-
-  },
-  {
-    id: 1,
-    name: 'سمك شعري',
-    price: 2,
-    image: '/products/saru.webp',
-    description: 'سمك طازج شعري أحمر',
+    image:  "/iran.jpg",
+    description:  "كرتون 10 كيلو روبيان جامبو مقشر  ",
     quantity:0
 
   },
@@ -348,7 +339,7 @@ export default function Home() {
                   <p className="text-sm text-gray-600">{offer.name}</p>
                   <div className="flex items-center justify-between">
                     <span className="">{offer.price.toFixed(3)} د.ك</span>
-                    <Button className="bg-gray-200 rounded-full " variant={'ghost'} size="sm" onClick={() => addToCart(offer)}>إضافة</Button>
+                    <Button className="bg-gray-100 rounded-full " variant={'ghost'} size="sm" onClick={() => addToCart(offer)}>إضافة</Button>
                   </div>
                 </div>
               </CardContent>
@@ -378,7 +369,7 @@ export default function Home() {
                   <p className="text-sm text-gray-500">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="font-bold">{product.price.toFixed(3)} د.ك</span>
-                    <Button className="bg-gray-200 rounded-full" variant={'ghost'} size="sm" onClick={() => addToCart(product)}>إضافة</Button>
+                    <Button className="bg-gray-100 rounded-full" variant={'ghost'} size="sm" onClick={() => addToCart(product)}>إضافة</Button>
                   </div>
                 </div>
               </CardContent>
