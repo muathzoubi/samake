@@ -266,7 +266,7 @@ export default function CheckoutPage() {
           {/* Total */}
           <div className="flex justify-between items-center font-bold text-lg pt-4 border-t">
             <span>المجموع الكلي</span>
-            <span>{cart.length} د.ك</span>
+            <span>{total} د.ك</span>
           </div>
         </div>
 
