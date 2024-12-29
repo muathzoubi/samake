@@ -199,11 +199,13 @@
   display: flex;
   gap: 5px;
   height: 22px;
-  outline: gray;
-  background: #f1f1f1;
+  background: #ffffff !important;
   margin-left: 3px;
   border-radius: 5px;
   max-width: 90px;
+}
+.card-number input{
+  background: white;
 }
 
 .small{
@@ -211,4 +213,13 @@
 }
 .card-number input {
   width: 70%;
+  box-shadow: 0 0 2px blue;
+}
+select{
+  background: white !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 2px blue;
+  
+}
+select:focus{
 }
