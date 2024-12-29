@@ -27,7 +27,7 @@ const  {cart,removeFromCart,updateQuantity} =useCart()
           { name: 'سيباس تركي', image: '/top3.png' },
           { name: 'عروض', image: '/top4.webp' },
         ].map((category, index) => (
-          <div key={index} className="text-center">
+          <div key={index} className="text-center" >
             <div className="aspect-square relative rounded-full overflow-hidden border-2 border-white shadow-lg mb-2">
               <Image
                 src={category.image}
@@ -69,7 +69,7 @@ const  {cart,removeFromCart,updateQuantity} =useCart()
 
         {/* Cart Item */}
         {cart.map((i,index)=>
-        <div className="flex gap-4 items-center mb-6">
+        <div className="flex gap-4 items-center mb-6" key={index}>
           <div className="w-24 h-24 relative rounded-lg overflow-hidden">
             <Image
               src={i.image}
