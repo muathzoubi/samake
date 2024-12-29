@@ -28,7 +28,7 @@ const  {cart,removeFromCart,updateQuantity} =useCart()
           { name: 'عروض', image: '/top4.webp' },
         ].map((category, index) => (
           <div key={index} className="text-center" >
-            <div className="aspect-square relative rounded-full overflow-hidden border-2 border-white shadow-lg mb-2">
+            <div className="aspect-square relative rounded-full overflow-hidden border-2 border-white shadow-lg ">
               <Image
                 src={category.image}
                 alt={category.name}

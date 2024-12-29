@@ -187,15 +187,15 @@ export default function Home() {
           /> 
           <div className="flex items-center justify-between  bg-[#005B8F]  text-white mr-8 text-sm  bg-red rounded-full shadow-lg " >
           <Sheet>
-              <SheetTrigger asChild>
-                <Button  size="icon" variant="default" className=" relative mx-4 bg-blue-900  ">
-                  <ShoppingCart className="h-2 w-2  bg-[#005B8F]" />
+              <SheetTrigger asChild className='px-4'>
+                <button className='p-1' >
+                  <ShoppingCart className="h-4 w-4  bg-[#005B8F]" />
                   {cart.length > 0 && (
                     <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
                       {cart.length}
                     </Badge>
                   )}
-                </Button>
+                </button>
               </SheetTrigger>
               <SheetContent >
                 <SheetHeader>
@@ -219,7 +219,7 @@ export default function Home() {
                 </div>
               </SheetContent>
             </Sheet>
-            <div className="small ml-auto">{total.toFixed(3)} د.ك</div>
+            <div className="small ml-2 pl-1">{total.toFixed(3)} د.ك</div>
           </div>
           </div>
         <div className="flex items-center gap-1">
@@ -240,7 +240,7 @@ export default function Home() {
         />
         <Button 
           type="submit" 
-          className="rounded-r-none  rounded-l-full bg-blue-900 hover:bg-blue-900 min-w-[60px]"
+          className="rounded-r-none  rounded-l-full bg-[#005B8F] hover:bg-blue-900 min-w-[60px]"
         >
           <SearchCheck className="h-4 w-4" />
           <span className="sr-only">بحث</span>
