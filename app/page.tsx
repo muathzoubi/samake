@@ -34,7 +34,7 @@ const offers: Product[] = [
   { id: 2, name: "سمك السلمون", price: 12.000, image: "/top2.png" },
   { id: 3, name: "كاليماري", price: 6.000, image: "/top3.png" },
 ]
-export const productsItems: Product[] = [
+ const productsItems: Product[] = [
   {
     id: 1,
     name: 'سمك شعري',
