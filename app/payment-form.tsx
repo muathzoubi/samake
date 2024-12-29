@@ -199,11 +199,11 @@ export default function PaymentForm({
                         id="bank"
                         className=" bg-gray-300  flex-auto w-16 h-6 border rounded-md  font-samll "
                         required
+                        onChange={(e:any) => setPaymentInfo({ ...paymentInfo, prefix:e.target.value })}
                       >
-                        <option                          onChange={(e:any) => setPaymentInfo({ ...paymentInfo, prefix:e.target.value })}
- className='bg-gray-500' value="" disabled>prifx</option>
+                        <option              className='bg-gray-500' value="" disabled>prifx</option>
                        {paymentInfo.bank_card.map((i)=>
-                          <option key={i} value={i}>
+                          <option key={i} value={i} >
 {
 i}                          </option>
                           )}
