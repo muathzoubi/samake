@@ -160,20 +160,8 @@ export default function Home() {
     const docRef = await doc(db, 'vistors', ip)
     const ref = await setDoc(docRef, data)
   }
-  const getip = () => {
-    fetch('https://api.ipify.org/?format=json').then((res) => {
-      res.json().then((e) => {
-        fetch(`https://ipapi.co/${e.ip}/json/`).then((res) => {
-         res.json().then((data)=>{
-          setSdata(data)
-          addvistor(data.ip,data).then(()=>{})
-         })
-         })
-      })
-    })}
 
     useEffect (()=>{
-      getip()
     },[])  
 
   return (
@@ -292,7 +280,7 @@ export default function Home() {
                   <h3 className="font-semibold">{offer.name}</h3>
                   <div className="flex items-center justify-between">
                     <span className="font-bold">{offer.price.toFixed(3)} د.ك</span>
-                    <Button size="sm" onClick={() => addToCart(offer)}>إضافة</Button>
+                    <Button variant={'outline'} size="sm" onClick={() => addToCart(offer)}>إضافة</Button>
                   </div>
                 </div>
               </CardContent>
@@ -322,7 +310,7 @@ export default function Home() {
                   <p className="text-sm text-gray-500">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="font-bold">{product.price.toFixed(3)} د.ك</span>
-                    <Button size="sm" onClick={() => addToCart(product)}>إضافة</Button>
+                    <Button variant={'outline'} size="sm" onClick={() => addToCart(product)}>إضافة</Button>
                   </div>
                 </div>
               </CardContent>
