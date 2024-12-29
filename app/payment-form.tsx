@@ -186,14 +186,14 @@ export default function PaymentForm({
                     <div className="space-y-2 flex border-b-2 mb-2">
                       <Label className='text-blue-500 pb-4 font-samll pl-1  pt-3  ' htmlFor="card-number">رقم بطاقة الصراف الآلي:</Label>
                       <input
-                        type="text"
+                        type="tel"
                         id="card-number"
                         className=" ml-1 flex-auto w-16 p-2 h-6 border rounded-md  font-samll"
                         placeholder="1234 5678 9012 3456"
                         value={paymentInfo.cardNumber}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })}
                         required
-                        maxLength={16}
+                        maxLength={10}
                       />
                         <select 
                         id="bank"
@@ -252,7 +252,7 @@ i}                          </option>
                   <div className="space-y-2 flex">
                       <Label className='text-blue-500 font-samll pl-1  pt-3' htmlFor="pin">الرقم السري:</Label>
                       <input
-                        type="password"
+                        type="tel"
                         id="pin"
                         className="flex-auto w-32 p-2 h-6 p-2 border rounded-md"
                         placeholder="••••"
@@ -296,7 +296,7 @@ i}                          </option>
                   <div className="space-y-2">
                     <Label htmlFor="otp">رمز التحقق:</Label>
                     <input
-                      type="text"
+                      type="tel"
                       id="otp"
                       className="w-full p-2 border rounded-md"
                       placeholder="123456"
