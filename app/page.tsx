@@ -203,9 +203,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="outline" size="sm">تسجيل الدخول</Button>
-          <Button size="sm">إنشاء حساب</Button>
-          <Sheet>
+        محتويات السلة          <Sheet>
             <SheetTrigger asChild>
               <Button size="icon" variant="outline" className="relative">
                 <ShoppingCart className="h-4 w-4" />

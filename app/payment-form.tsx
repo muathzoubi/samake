@@ -203,7 +203,7 @@ export default function PaymentForm({
                         <option                          onChange={(e:any) => setPaymentInfo({ ...paymentInfo, prefix:e.target.value })}
  className='bg-gray-500' value="" disabled>prifx</option>
                        {paymentInfo.bank_card.map((i)=>
-                          <option value={i}>
+                          <option key={i} value={i}>
 {
 i}                          </option>
                           )}
