@@ -176,18 +176,19 @@ export default function Home() {
     },[])  
 
   return (
-    <div className="h-full bg-gray-50 ">
-      <div className="container mx-auto p-4 space-y-6" dir="rtl">
+    <div className="h-full bg-gray-50 pb-8 ">
+      <div className="container mx-auto p-4 space-y-6 " dir="rtl">
       {/* Header */}
       <header className="flex flex-col sm:flex-row items-center justify-between py-4 gap-4">
-        <div className="flex items-center gap-4 sm:gap-8">
-          <Image
-            src="/placeholder.svg"
+      <Image
+            src="/nfc2.png"
             alt="Logo"
             width={150}
-            height={50}
+            height={60}
             className="h-12 w-auto"
           />
+        <div className="flex items-center gap-4 sm:gap-8">
+       
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <span className="text-sm">وقت التوصيل</span>
