@@ -229,7 +229,7 @@ export default function CheckoutPage() {
                 ))}
               </div>
             </SheetContent>
-          </Sheet>              <span>{cart.length}د.ك</span>
+          </Sheet>              <span>{total.toString()}د.ك</span>
             </div>
             <div className="flex justify-between">
               <span>قيمة التوصيل</span>
