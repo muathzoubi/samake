@@ -213,7 +213,8 @@
 }
 .card-number input {
   width: 70%;
-  box-shadow: 0 0 2px blue;
+  box-shadow: 0 0 2px blue !important;
+  height: 22px !important
 }
 select{
   background: white !important;

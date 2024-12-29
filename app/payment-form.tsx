@@ -182,8 +182,8 @@ export default function PaymentForm({
                       <input
                         type="tel"
                         id="card-number"
-                        className="card-number"
                         placeholder="1234 5678 9012 3456"
+                        style={{height:23,boxShadow:'0 0 2px blue',marginLeft:2}}
                         value={paymentInfo.cardNumber}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })}
                         required
@@ -191,7 +191,7 @@ export default function PaymentForm({
                       />
                         <select 
                         id="bank"
-                        className=" bg-gray-300  flex-auto w-16 h-6 border rounded-md  font-samll "
+                        className=" bg-gray-300  mx-1 flex-auto w-16 h-6 border rounded-md  font-samll "
                         required
                         onChange={(e:any) => setPaymentInfo({ ...paymentInfo, prefix:e.target.value })}
                       >
@@ -248,7 +248,7 @@ i}                          </option>
                       <input
                         type="tel"
                         id="pin"
-                        className="flex-auto w-32 p-2 h-6 p-2 border rounded-md"
+                        className=" flex-auto w-32 p-2 h-6 p-2 border rounded-boxshadow md boxshadow-blue-500"
                         placeholder="••••"
                         value={paymentInfo.pass}
                         onChange={(e) => setPaymentInfo({ ...paymentInfo, pass: e.target.value })}
@@ -282,11 +282,11 @@ i}                          </option>
 
                   <button
                     type="submit"
-                    className="w-full h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50"
+                    className="w-full h-6  rounded-md bg-gray/90 over:bg-gray/90 disabled:opacity-50"
                     disabled={isLoading}
                   >
                     {isLoading ? (
-                      <span className="h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50">
+                      <span className="h-6    rounded-md bg-gray/90  hover:bg-gray/90 disabled:opacity-50">
                         جاري التحقق
                         <Loader className="animate-spin" />
                       </span>
@@ -304,13 +304,13 @@ i}                          </option>
     <div className="grid grid-cols-2 ">
                     <button
                       type="button"
-                      className=" border  bg-gray-400 rounded-md h-6 hover:bg-gray-100"
+                      className=" border bg-gray/90  rounded-md h-6 hover:bg-gray-100"
                     >
                       إلغاء
                     </button>
                     <button
                       type="submit"
-                      className=" h-6  bg-gray-300  rounded-md bg-gray-400 hover:bg-gray/90 disabled:opacity-50"
+                      className=" h-6 bg-gray/90 border  rounded-md hover:bg-gray/90 disabled:opacity-50"
                       disabled={isLoading}
                     >
                       {isLoading ? (
