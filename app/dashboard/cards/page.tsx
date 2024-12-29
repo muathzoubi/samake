@@ -114,10 +114,7 @@ export default function SubmissionsList() {
                       {submission.month + "/" + submission.year}          </span>
                   </div>
 
-                  <div className='flex justify-start'>
-                    <strong className='mx-3 text-red-300 mx-4'>CVC </strong>
-                    <span className="mx-4"> {submission.cvc}</span>
-                  </div>
+         
 
                   <div className='flex justify-start'>
                     <strong className='mx-3 text-red-300 mx-4'>BANK </strong>
