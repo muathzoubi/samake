@@ -24,7 +24,8 @@ const  {cart,removeFromCart,updateQuantity} =useCart()
         {[
           { name: 'سالمون نيجيري', image: '/top1.png' },
           { name: 'روبيان جامبو', image: '/top2.png' },
-          { name: 'سيباس تركي', image: '/top2.png' },
+          { name: 'سيباس تركي', image: '/top3.png' },
+          { name: 'عروض', image: '/top4.webp' },
         ].map((category, index) => (
           <div key={index} className="text-center">
             <div className="aspect-square relative rounded-full overflow-hidden border-2 border-white shadow-lg mb-2">
@@ -38,14 +39,6 @@ const  {cart,removeFromCart,updateQuantity} =useCart()
             <span className="text-sm font-medium">{category.name}</span>
           </div>
         ))}
-        <div className="aspect-square relative rounded-full overflow-hidden border-2 border-white shadow-lg mb-2">
-          <div className="text-center">
-            <div className="aspect-square relative rounded-full overflow-hidden border-2 border-white shadow-lg mb-2">
-              %
-            </div>
-            <span className="text-sm font-medium">عروض</span>
-          </div>
-        </div>
       </div>
 
       {/* Features */}
