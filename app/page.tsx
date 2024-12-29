@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from "next/image"
-import { Star, ShoppingCart, SearchCheck } from 'lucide-react'
+import { Star, ShoppingCart, SearchCheck, ChevronLeft } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -185,11 +185,11 @@ export default function Home() {
             height={30}
             className="h-6 w-full"
           /> 
-          <div className="flex items-center justify-between  bg-blue-900 text-white mr-8 text-sm  bg-red rounded-full shadow-lg " >
+          <div className="flex items-center justify-between  bg-[#005B8F]  text-white mr-8 text-sm  bg-red rounded-full shadow-lg " >
           <Sheet>
               <SheetTrigger asChild>
-                <Button size="icon" variant="default" className="relative mx-4 bg-blue-900  ">
-                  <ShoppingCart className="h-2 w-2" />
+                <Button  size="icon" variant="default" className=" relative mx-4 bg-blue-900  ">
+                  <ShoppingCart className="h-2 w-2  bg-[#005B8F]" />
                   {cart.length > 0 && (
                     <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
                       {cart.length}
@@ -259,35 +259,29 @@ export default function Home() {
           </div>
       </header>
 
-      {/* Categories */}
-      <div className="flex items-center justify-center gap-4 sm:gap-8 overflow-x-auto py-2">
-        <div className="text-center">
-          <div className="w-16 h-16 text-red-500 font-bold text-3xl bg-gray-100 rounded-full flex items-center justify-center mb-2">
-           
-%
+       {/* Categories */}
+       <div className="grid grid-cols-4 gap-4 px-4 py-6">
+        {[
+          { name: 'سالمون نيجيري', image: '/top1.png' },
+          { name: 'روبيان جامبو', image: '/top2.png' },
+          { name: 'سيباس تركي', image: '/top3.png' },
+          { name: 'عروض', image: '/top4.webp' },
+        ].map((category, index) => (
+          <div key={index} className="text-center">
+            <div className="aspect-square relative rounded-full overflow-hidden border-2 border-white shadow-lg mb-2">
+              <Image
+                src={category.image}
+                alt={category.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <span className="text-sm font-medium">{category.name}</span>
           </div>
-          <span className="text-sm">عروض</span>
-        </div>
-        <div className="text-center">
-          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2">
-            <Image src="/top2.png" alt="روبيان" width={50} height={50} />
-          </div>
-          <span className="text-sm">روبيان</span>
-        </div>
-        <div className="text-center">
-          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2">
-            <Image src="/top3.png" alt="سمك" width={50} height={50} />
-          </div>
-          <span className="text-sm">سمك</span>
-        </div>
-        <div className="text-center">
-          <div className="bg-gray-100 rounded-full flex items-center justify-center">
-          <Image src="/top1.png" alt="عروض" width={50} height={50} />
-
-          </div>
-          <span className="text-sm">سيباس تركي</span>
-        </div>
+        ))}
+      
       </div>
+
 <section>
   <MerchantCard/>
 </section>
@@ -380,56 +374,22 @@ export default function Home() {
       </section>
       
     </div>
-    <div className="fixed bottom-0 left-0 right-0 m-4">
-      <div className="flex items-center justify-between bg-blue-900 p-3 text-white rounded-full shadow-lg">
-        <div className="flex items-center">
-        <Sheet>
-            <SheetTrigger asChild>
-              <Button size="icon" variant="default" className="relative mx-2">
-                <ShoppingCart className="h-4 w-4" />
-                {cart.length > 0 && (
-                  <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
-                    {cart.length}
-                  </Badge>
-                )}
-              </Button>
-            </SheetTrigger>
-            <SheetContent >
-              <SheetHeader>
-                <SheetTitle>سلة التسوق</SheetTitle>
-                <SheetDescription>
-                  {cart.length === 0 ? "سلة التسوق فارغة" : `${cart.length} منتجات في السلة`}
-                </SheetDescription>
-              </SheetHeader>
-              <div className="mt-4 space-y-4">
-                {cart.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center">
-                    <span>{item.name}</span>
-                    <div className="flex items-center gap-2">
-                      <span>{item.price.toFixed(3)} د.ك</span>
-                      <Button size="sm" variant="destructive" onClick={() => removeFromCart(item.id)}>
-                        حذف
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
-          <div className="font-bold">{total.toFixed(3)} د.ك</div>
+   
+        <Link href="/cartprod">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t">
+          <Button
+            className="w-full bg-[#005B8F] hover:bg-[#004B7A] text-white rounded-full h-14"
+          >
+            <div className="flex items-center justify-between w-full px-4">
+              <ChevronLeft className="h-6 w-6" />
+              <span className="text-lg">المتابعة للدفع</span>
+              <span className="font-bold">د.ك {total.toFixed(3)} د.ك</span>
+            </div>
+          </Button>
         </div>
-        <Link href="/checkout">
-        <Button 
-          variant="secondary" 
-          className="rounded-full" 
-          aria-label="أتمام الطلب"
-        >
-          أتمام الطلب &rarr;
-        </Button>
+
         </Link>
       </div>
-    </div>
-    </div>
   )
 }
 

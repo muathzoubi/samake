@@ -75,7 +75,71 @@ export default function CheckoutPage() {
         {/* Location Selection */}
         <div className="space-y-4">
           <h1 className="text-xl font-bold text-right">حدد موقعك</h1>
-          <div className="flex justify-between gap-4">
+
+          <div className="space-y-4 bg-white p-4 rounded-lg">
+            <h3 className="text-lg font-bold">تفاصيل العنوان</h3>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="area">الأسم</Label>
+                <Input
+                  id="area"
+                  name="area"
+                  placeholder="مثال: محمد احمد"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="block">العنوان</Label>
+                <Input
+                  id="block"
+                  name="block"
+                  placeholder="مثال: شارع الحرية"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="street">البناية / الشقة</Label>
+                <Input
+                  id="street"
+                  name="street"
+                  placeholder="مثال: بناية رقم 9"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="house">رقم الهاتف</Label>
+                <div className='flex'>
+                <Input
+                  id="house"
+                  name="house"
+                  placeholder=" ### ### ###"
+                  required
+                /> <Input
+                id="house"
+                name="house"
+                className='w-32 mx-1'
+                readOnly
+                value={'965+'}
+                placeholder=" ### ### ###"
+                required
+              /></div>
+              </div>
+            </div>
+
+          
+            <div className="space-y-2">
+              <Label htmlFor="notes">ملاحظات إضافية (اختياري)</Label>
+              <Input
+                id="notes"
+                name="notes"
+                placeholder="مثال: بجانب المسجد"
+                className="h-20"
+              />
+            </div>
+            <div className="flex justify-between gap-4">
             <button
               onClick={() => setSelectedLocation('client')}
               className={`flex-1 rounded-full py-3 px-4 flex items-center justify-center gap-2 ${selectedLocation === 'client' ? 'bg-gray-200' : 'bg-gray-100'
@@ -101,79 +165,8 @@ export default function CheckoutPage() {
               <span>البيت</span>
             </button>
           </div>
-          <div className="space-y-4 bg-white p-4 rounded-lg">
-            <h3 className="text-lg font-bold">تفاصيل العنوان</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="area">المنطقة</Label>
-                <Input
-                  id="area"
-                  name="area"
-                  placeholder="مثال: السالمية"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="block">القطعة</Label>
-                <Input
-                  id="block"
-                  name="block"
-                  placeholder="مثال: 12"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="street">الشارع</Label>
-                <Input
-                  id="street"
-                  name="street"
-                  placeholder="مثال: شارع سالم المبارك"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="house">المنزل</Label>
-                <Input
-                  id="house"
-                  name="house"
-                  placeholder="مثال: 24"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="floor">الطابق (اختياري)</Label>
-                <Input
-                  id="floor"
-                  name="floor"
-                  placeholder="مثال: الأول"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="apartment">الشقة (اختياري)</Label>
-                <Input
-                  id="apartment"
-                  name="apartment"
-                  placeholder="مثال: 12"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="notes">ملاحظات إضافية (اختياري)</Label>
-              <Input
-                id="notes"
-                name="notes"
-                placeholder="مثال: بجانب المسجد"
-                className="h-20"
-              />
-            </div>
           </div>
+          
         </div>
 
         {/* Payment Method */}
