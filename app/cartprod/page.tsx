@@ -5,9 +5,10 @@ import { Minus, Plus, ChevronLeft, Lock } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useCart } from '@/components/cart-provider'
+import Link from 'next/link'
 
 export default function Cart() {
-const  {cart} =useCart()
+const  {cart,removeFromCart,updateQuantity} =useCart()
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
       {/* Header */}
@@ -93,6 +94,7 @@ const  {cart} =useCart()
                   variant="ghost"
                   size="icon"
                   className="h-8 w-8 rounded-full"
+                  onClick={()=>updateQuantity(i.id,i.quantity+1)}
                 >
                   <Plus className="h-4 w-4" />
                 </Button>
@@ -101,6 +103,7 @@ const  {cart} =useCart()
                   variant="ghost"
                   size="icon"
                   className="h-8 w-8 rounded-full"
+                  onClick={()=>removeFromCart(i.id)}
                 >
                   <Minus className="h-4 w-4" />
                 </Button>
@@ -121,6 +124,7 @@ const  {cart} =useCart()
 
         {/* Checkout Button */}
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t">
+        <Link href="/checkout">
           <Button
             className="w-full bg-[#005B8F] hover:bg-[#004B7A] text-white rounded-full h-14"
           >
@@ -130,6 +134,7 @@ const  {cart} =useCart()
               <span className="font-bold">د.ك 8.000</span>
             </div>
           </Button>
+          </Link>
         </div>
 
         {/* Website URL */}
