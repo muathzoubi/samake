@@ -243,22 +243,30 @@ export default function Home() {
       {/* Categories */}
       <div className="flex items-center justify-center gap-4 sm:gap-8 overflow-x-auto py-2">
         <div className="text-center">
-          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2">
-            <Image src="/placeholder.svg" alt="عروض" width={32} height={32} />
+          <div className="w-16 h-16 text-red-500 font-bold text-3xl bg-gray-100 rounded-full flex items-center justify-center mb-2">
+           
+%
           </div>
           <span className="text-sm">عروض</span>
         </div>
         <div className="text-center">
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2">
-            <Image src="/placeholder.svg" alt="روبيان" width={32} height={32} />
+            <Image src="/top2.png" alt="روبيان" width={50} height={50} />
           </div>
           <span className="text-sm">روبيان</span>
         </div>
         <div className="text-center">
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-2">
-            <Image src="/placeholder.svg" alt="سمك" width={32} height={32} />
+            <Image src="/top3.png" alt="سمك" width={50} height={50} />
           </div>
           <span className="text-sm">سمك</span>
+        </div>
+        <div className="text-center">
+          <div className="bg-gray-100 rounded-full flex items-center justify-center">
+          <Image src="/top1.png" alt="عروض" width={50} height={50} />
+
+          </div>
+          <span className="text-sm">سيباس تركي</span>
         </div>
       </div>
 
