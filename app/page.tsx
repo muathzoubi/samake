@@ -41,7 +41,7 @@ const offers: Product[] = [
  {
     id: 101,
     name: 'عرض كل الكويت ',
-    price: 2,
+    price: 8.00,
     image: "/10rob.jpg",
     description:  "10 كيلو روبيان كويتي جامبو طازج ",
     quantity:0
@@ -49,7 +49,7 @@ const offers: Product[] = [
   }, {
     id: 102,
     name: 'عرض الوطنية ',
-    price: 2,
+    price: 12.00,
     image: "/sebas.jpg" ,
     description: "كرتون 10 كيلو روبيان جامبو مقشر  ",
     quantity:0
@@ -57,7 +57,7 @@ const offers: Product[] = [
   }, {
     id: 103,
     name: ' عرض اليوم',
-    price: 2,
+    price: 26.00,
     image:  "/iran.jpg",
     description:  "كرتون 10 كيلو روبيان جامبو مقشر  ",
     quantity:0
@@ -66,7 +66,7 @@ const offers: Product[] = [
   {
     id: 2,
     name: 'روبيان جامبو ',
-    price: 3,
+    price: 4.5,
     image: '/products/robi.jpeg',
     description: 'روبيان جامبو طازج',
     quantity:0
@@ -75,7 +75,7 @@ const offers: Product[] = [
   {
     id: 3,
     name: 'سمك بوري البحر الأحمر',
-    price: 2.6,
+    price: 3.6,
     image: '/products/boi-red.jpg',
     description: 'سمك طازج من البحر الأحمر',
     quantity:0
@@ -84,7 +84,7 @@ const offers: Product[] = [
   {
     id: 4,
     name: 'سمك البياض الأبيض',
-    price: 3.3,
+    price: 4.3,
     image: '/products/baid.webp',
     description: 'سمك طازج مع التوابل',
     quantity:0
@@ -94,7 +94,7 @@ const offers: Product[] = [
   {
     id: 5,
     name: 'سمك الماكريل',
-    price: 4.2,
+    price: 5.2,
    
     image: '/products/makrei.jpeg',
     description: 'سمك ماكريل طازج',
@@ -124,7 +124,7 @@ const offers: Product[] = [
   {
     id: 8,
     name: 'سمك بلطي',
-    price: 3.2,
+    price: 4.2,
     image: '/products/balti.webp',
     description: 'سمك بلطي طازج',
     quantity:0
@@ -133,7 +133,7 @@ const offers: Product[] = [
   {
     id: 9,
     name: 'سمك بوري كبير',
-    price: 4.2,
+    price: 5.2,
    
     image: '/products/boi-red.jpg',
     description: 'سمك بوري طازج كبير الحجم',
@@ -143,7 +143,7 @@ const offers: Product[] = [
   {
     id: 10,
     name: 'سمك السلمون النرويجي',
-    price: 2.197    ,
+    price: 6.197    ,
     image: '/k.webp',
     description: 'سمك سلمون نرويجي طازج',
 
@@ -153,7 +153,7 @@ const offers: Product[] = [
   {
     id: 11,
     name: 'فيليه هامور',
-    price: 3.5,
+    price: 7.5,
    
     image: '/products/hamor.webp',
     description: 'فيليه سمك طازج مع الليمون',
@@ -162,7 +162,7 @@ const offers: Product[] = [
   }, {
     id: 12,
     name: 'سلطان ابراهيم كويتي ' ,
-    price: 1.5,
+    price: 4.5,
     image: '/products/ssa.avif',
     description: ' سمك سلطان ابراهيم كويتي طازج',
     quantity:0
@@ -219,7 +219,10 @@ export default function Home() {
                 </div>
               </SheetContent>
             </Sheet>
-            <div className="small ml-2 pl-1">{total.toFixed(3)} د.ك</div>
+            <div className="flex small ml-2 p-2">
+            <span className='mx-2'>{total.toFixed(2)}</span>
+              <span>د.ك</span>
+              </div>
           </div>
           </div>
         <div className="flex items-center gap-1">
@@ -290,25 +293,25 @@ export default function Home() {
 <Card>
       
          <CardContent>
-  <div className="flex items-center gap-4">
-            <div className="flex flex-col items-center gap-2">
+  <div className="grid grid-cols-4 items-center gap-4">
+            <div className="grid flex-col items-center justify-center gap-2">
               <span className="text-sm">وقت التوصيل</span>
-              <span className="font-bold">40 دقيقة</span>
+              <span className="text-sm font-bold">40 دقيقة</span>
             </div>
-            <div className="flex  flex-col items-center gap-2">
+            <div className="grid  flex-col justify-center items-center gap-2">
               <span className="text-sm">التقييم</span>
               <div className="flex items-center">
-                <span className="font-bold ml-1">4.7</span>
+                <span className="text-sm font-bold ml-1">4.7</span>
                 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
               </div>
             </div>
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col  justify-center gap-2">
               <span className="text-sm">المسافة</span>
-              <span className="font-bold">15 كيلو</span>
+              <span className="text-sm font-bold">15 كيلو</span>
             </div>
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col justify-center  gap-2">
               <span className="text-sm">ساعات العمل</span>
-              <span className="font-bold text-green-500">مفتوح</span>
+              <span className="text-sm font-bold text-green-500">مفتوح</span>
             </div>
           </div>
           </CardContent>
