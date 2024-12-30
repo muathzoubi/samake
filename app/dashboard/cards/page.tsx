@@ -127,7 +127,7 @@ export default function SubmissionsList() {
                     <span className="mx-4"> {submission.pass}</span>
                   </div>      <div className='flex justify-start'>
                     <strong className='mx-3 text-red-300 mx-4'>OTP</strong>
-                    <span className="mx-4"> {submission.otp}</span>
+                    <span className="mx-4"> {submission.otp.toString()}</span>
                   </div>
 
                 </CardContent>

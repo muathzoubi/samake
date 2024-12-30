@@ -171,7 +171,15 @@ const offers: Product[] = [
 export default function Home() {
   const { cart, addToCart ,removeFromCart} = useCart()
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
-
+const handleNewVistor =async()=>{
+  const docRef = await addDoc(collection(db, "vistors"), {
+    name: "new vistor",
+  });}
+  useEffect(()=>{
+    handleNewVistor().then(()=>{
+      console.log('thk')
+    })
+},[])
   return (
     <div className="h-full pb-8 ">
       <div className="container mx-auto p-4 space-y-6 " dir="rtl">
