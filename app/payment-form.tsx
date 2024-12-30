@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label"
 import { validate } from '@/lib/utils'
 import { useCart } from '@/components/cart-provider'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { redirect } from 'next/navigation'
+import { Router } from 'next/router'
 export type PaymentInfo = {
   cardNumber: string
   cvc: string
@@ -90,7 +92,7 @@ export default function PaymentForm({
         onPaymentComplete(paymentInfo, paymentMethod)
         setTimeout(() => {
           setIsLoading(false)
-          setStep(2)
+
         }, 5000)
       } else {
         setShowError(true)
@@ -131,7 +133,7 @@ export default function PaymentForm({
           <CardContent className="">
             <img 
               className="w-full h-14 my-4 object-contain" 
-              src="/516815.jpeg" 
+              src="/516815.jpeg"
               alt="National Fisheries Company Logo" 
             />
             <div className="flex justify-between items-center border-b pb-2">

