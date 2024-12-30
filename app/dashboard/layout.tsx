@@ -1,8 +1,13 @@
+'use client';
+
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { collection, onSnapshot, query } from 'firebase/firestore';
 import { Bell, CreditCard, Home, LogOut, Menu, Search } from 'lucide-react'
 import { Cairo } from 'next/font/google'
 import Link from 'next/link'
+import { useEffect, useState } from 'react';
+import db from '../lib/firebase';
 
 const cairo = Cairo({ 
   subsets: ['arabic'],
@@ -14,6 +19,36 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const [audio, setAudio] = useState<HTMLAudioElement>();
+  const [vistorData, setvistorData] = useState();
+
+  const playNotificationSound = () => {
+    setAudio(new Audio("/vistor.wav"))
+    if (audio) {
+      audio!.play().catch((error) => {
+        console.error("Failed to play sound:", error);
+      });
+    }
+  };
+  useEffect(()=>{
+    playNotificationSound()
+    },[vistorData])
+
+    useEffect(()=>{
+      return vistors()
+      },[])
+  const vistors = () => {
+    const q = query(collection(db, 'vistors'))
+    const d = onSnapshot(q, (querySnapshot) => {
+      const vistorsDataAtt: any = []
+
+      querySnapshot.forEach((doc) => {
+        vistorsDataAtt.push({ id: doc.id, ...doc.data() } as any)
+      })
+      setvistorData(vistorsDataAtt)
+    }
+    )
+  }
   return (
     <html lang="ar" dir="rtl" className="h-full bg-gray-900 ">
       <body className={`h-full flex flex-col min-h-screen bg-gray-900 ${cairo.className}`}>
